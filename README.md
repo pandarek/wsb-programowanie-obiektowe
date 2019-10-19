@@ -1,2 +1,2 @@
-# wsb-zadania
-Programowanie obiektowe
+# Programowanie obiektowe
+Zadania
