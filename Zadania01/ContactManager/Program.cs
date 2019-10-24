@@ -1,60 +1,46 @@
 ﻿using System;
 
-namespace Zadania01
+namespace ContactManager
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-
-            //osoba.PrzedstawSie();
-            //osoba.UstawDane("Jan","Kowalski");
-
-            //Console.WriteLine();
-
-            //osoba.PrzedstawSie();
-
-            //Console.WriteLine();
-
-            //Osoba osoba2 = osoba;
-
-            //osoba2.Imie = "Adam";
-            //osoba2.Nazisko = "Nowak";
-
-            //osoba2.PrzedstawSie();
-
-
-          //  Osoba osoba = new Osoba();
-
-            
 
             Kontakty kontakty = new Kontakty();
 
-            
 
-            bool udalosoe = false;
-            int result = 0;
-            while ((!udalosoe) || (result < 1))
-            {
-                Console.Clear();
-                Console.WriteLine("Podaj ilość kontaktów:");
-                udalosoe = int.TryParse(Console.ReadLine(), out result);
+            Console.WriteLine("\n- Książka Adresowa -\n");
 
-            }
-            kontakty.IloscKontaktow = result;
-
-          
-
+            kontakty.IloscKontaktow = Dodatki.PodajLiczbe("Podaj lość osób do wprowadzenia: ");
 
             kontakty.DodajKontakt();
 
-            kontakty.PokazKontakt();
+            bool wyjscie = false;
 
+            while (!wyjscie)
+            {
 
-            
+                Dodatki.Menu();
 
+                switch (Dodatki.PodajLiczbe("Wybierz: "))
+                {
+                    case 1:
+                        Console.WriteLine();
+                        kontakty.PokazKontakt();
+                        Dodatki.Czekaj();
+                        break;
+                    case 2:
+                        int numerkontaktu = Dodatki.PodajLiczbe("Podaj numer osoby do wyświetlenia: ");
+                        kontakty.PokazDaneOsoby(numerkontaktu - 1);
+                        Dodatki.Czekaj();
+                        break;
+                    case 3:
+                        wyjscie = true;
+                        break;
+                }
 
+            }
         }
     }
 }

@@ -1,11 +1,16 @@
 ﻿<Properties StartupConfiguration="{517EED40-1C4B-406F-BFE4-F8074913FF54}|Default">
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="ContactManager/Dodatki.cs">
+    <Files>
+      <File FileName="ContactManager/Dodatki.cs" Line="22" Column="59" />
+      <File FileName="ContactManager/Osoba.cs" Line="44" Column="37" />
+      <File FileName="ContactManager/Adres.cs" Line="33" Column="10" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="ContactManager" expanded="True">
             <Node name="ContactManager" expanded="True">
-              <Node name="Program.cs" selected="True" />
+              <Node name="Dodatki.cs" selected="True" />
             </Node>
           </Node>
         </State>

@@ -1,12 +1,12 @@
 ﻿using System;
-namespace Zadania01
+namespace ContactManager
 {
     public class Osoba
     {
         private string _imie;
         private string _nazwisko;
         private Adres _adres;
-        
+
         //public Osoba(string imie, string nazwisko, Adres adres)
         //{
         //    this._imie = imie;
@@ -17,17 +17,17 @@ namespace Zadania01
         public string Imie
         {
             get => _imie;
-            
+
             set => _imie = value;
-            
+
 
         }
         public string Nazisko
         {
             get => _nazwisko;
-            
+
             set => _nazwisko = value;
-            
+
         }
         public Adres Adres
         {
@@ -41,10 +41,9 @@ namespace Zadania01
             return $"{_imie} {_nazwisko}";
 
         }
-        public void PobierzAdres()
+        public string PobierzAdres()
         {
-            //Console.WriteLine("Nazywam się {0} {1}\nAdress:", _imie, _nazwisko, _adres);
-            Console.WriteLine($"Nazywam się {_imie} {_nazwisko}\nAdress: {_adres}");
+            return $"Nazywa się {_imie} {_nazwisko}\nAdress: {_adres}\n";
 
         }
         public void UstawDane(string imie, string nazwisko, Adres adres)

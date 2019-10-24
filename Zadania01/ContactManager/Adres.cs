@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Zadania01
+namespace ContactManager
 {
     public class Adres
     {
