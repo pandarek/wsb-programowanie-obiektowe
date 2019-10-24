@@ -1,0 +1,12 @@
+c:/users/student/documents/visual studio 2015/Projects/ConsoleApplication1/ConsoleApplication1/bin/Debug/ConsoleApplication1.exe.config
+c:/users/student/documents/visual studio 2015/Projects/ConsoleApplication1/ConsoleApplication1/bin/Debug/ConsoleApplication1.exe
+c:/users/student/documents/visual studio 2015/Projects/ConsoleApplication1/ConsoleApplication1/bin/Debug/ConsoleApplication1.pdb
+c:/users/student/documents/visual studio 2015/Projects/ConsoleApplication1/ConsoleApplication1/obj/Debug/PierwszyProgemObiektowy.csprojResolveAssemblyReference.cache
+c:/users/student/documents/visual studio 2015/Projects/ConsoleApplication1/ConsoleApplication1/obj/Debug/ConsoleApplication1.exe
+c:/users/student/documents/visual studio 2015/Projects/ConsoleApplication1/ConsoleApplication1/obj/Debug/ConsoleApplication1.pdb
+/Users/pandarek/Dropbox/WSB/Semestr-3/Programowanie obiektowe/Zajęcia 1/PierwszyProgemObiektowy/bin/Debug/ConsoleApplication1.exe.config
+/Users/pandarek/Dropbox/WSB/Semestr-3/Programowanie obiektowe/Zajęcia 1/PierwszyProgemObiektowy/bin/Debug/ConsoleApplication1.exe
+/Users/pandarek/Dropbox/WSB/Semestr-3/Programowanie obiektowe/Zajęcia 1/PierwszyProgemObiektowy/bin/Debug/ConsoleApplication1.pdb
+/Users/pandarek/Dropbox/WSB/Semestr-3/Programowanie obiektowe/Zajęcia 1/PierwszyProgemObiektowy/obj/Debug/PierwszyProgemObiektowy.csprojAssemblyReference.cache
+/Users/pandarek/Dropbox/WSB/Semestr-3/Programowanie obiektowe/Zajęcia 1/PierwszyProgemObiektowy/obj/Debug/ConsoleApplication1.exe
+/Users/pandarek/Dropbox/WSB/Semestr-3/Programowanie obiektowe/Zajęcia 1/PierwszyProgemObiektowy/obj/Debug/ConsoleApplication1.pdb
