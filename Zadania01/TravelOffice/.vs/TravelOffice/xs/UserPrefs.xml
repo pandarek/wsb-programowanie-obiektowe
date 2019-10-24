@@ -1,0 +1,30 @@
+﻿<Properties StartupConfiguration="{6516C17D-62A4-47E1-B551-BAB2E057E474}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="TravelOffice/Program.cs">
+    <Files>
+      <File FileName="TravelOffice/Program.cs" Line="12" Column="2" />
+      <File FileName="TravelOffice/Date.cs" Line="19" Column="16" />
+      <File FileName="TravelOffice/Address.cs" Line="1" Column="1" />
+      <File FileName="TravelOffice/Customer.cs" Line="1" Column="1" />
+      <File FileName="TravelOffice/Trip.cs" Line="1" Column="1" />
+      <File FileName="TravelOffice/TravelOffice.cs" Line="11" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="TravelOffice" expanded="True">
+            <Node name="TravelOffice" expanded="True">
+              <Node name="Program.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.TravelOffice FirstBuild="True" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
