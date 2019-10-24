@@ -1,16 +1,11 @@
 ﻿<Properties StartupConfiguration="{517EED40-1C4B-406F-BFE4-F8074913FF54}|Default">
-  <MonoDevelop.Ide.ItemProperties.Zadania01 PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Zadania01/Adres.cs">
-    <Files>
-      <File FileName="Zadania01/Adres.cs" Line="31" Column="1" />
-      <File FileName="Zadania01/Osoba.cs" />
-    </Files>
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="Zadania01" expanded="True">
-            <Node name="Zadania01" expanded="True">
-              <Node name="Adres.cs" selected="True" />
+          <Node name="ContactManager" expanded="True">
+            <Node name="ContactManager" expanded="True">
+              <Node name="Program.cs" selected="True" />
             </Node>
           </Node>
         </State>
@@ -18,6 +13,7 @@
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.ContactManager PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />

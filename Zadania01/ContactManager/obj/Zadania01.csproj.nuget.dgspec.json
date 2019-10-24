@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/pandarek/Dropbox/WSB/Semestr-3/Programowanie obiektowe/Zajęcia 1/Zadania01/Zadania01/Zadania01/Zadania01.csproj": {}
+    "/Users/pandarek/Dropbox/WSB/Rok 2/Semestr-3/Programowanie obiektowe/Zadania/Zadania01/Zadania01/Zadania01.csproj": {}
   },
   "projects": {
-    "/Users/pandarek/Dropbox/WSB/Semestr-3/Programowanie obiektowe/Zajęcia 1/Zadania01/Zadania01/Zadania01/Zadania01.csproj": {
+    "/Users/pandarek/Dropbox/WSB/Rok 2/Semestr-3/Programowanie obiektowe/Zadania/Zadania01/Zadania01/Zadania01.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/pandarek/Dropbox/WSB/Semestr-3/Programowanie obiektowe/Zajęcia 1/Zadania01/Zadania01/Zadania01/Zadania01.csproj",
+        "projectUniqueName": "/Users/pandarek/Dropbox/WSB/Rok 2/Semestr-3/Programowanie obiektowe/Zadania/Zadania01/Zadania01/Zadania01.csproj",
         "projectName": "Zadania01",
-        "projectPath": "/Users/pandarek/Dropbox/WSB/Semestr-3/Programowanie obiektowe/Zajęcia 1/Zadania01/Zadania01/Zadania01/Zadania01.csproj",
+        "projectPath": "/Users/pandarek/Dropbox/WSB/Rok 2/Semestr-3/Programowanie obiektowe/Zadania/Zadania01/Zadania01/Zadania01.csproj",
         "packagesPath": "/Users/pandarek/.nuget/packages/",
-        "outputPath": "/Users/pandarek/Dropbox/WSB/Semestr-3/Programowanie obiektowe/Zajęcia 1/Zadania01/Zadania01/Zadania01/obj/",
+        "outputPath": "/Users/pandarek/Dropbox/WSB/Rok 2/Semestr-3/Programowanie obiektowe/Zadania/Zadania01/Zadania01/obj/",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"

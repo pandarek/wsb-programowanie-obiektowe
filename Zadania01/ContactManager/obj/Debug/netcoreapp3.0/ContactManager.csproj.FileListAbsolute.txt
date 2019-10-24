@@ -1,0 +1,11 @@
+/Users/pandarek/Dropbox/WSB/Rok 2/Semestr-3/Programowanie obiektowe/Zadania/Zadania01/ContactManager/bin/Debug/netcoreapp3.0/ContactManager
+/Users/pandarek/Dropbox/WSB/Rok 2/Semestr-3/Programowanie obiektowe/Zadania/Zadania01/ContactManager/bin/Debug/netcoreapp3.0/ContactManager.deps.json
+/Users/pandarek/Dropbox/WSB/Rok 2/Semestr-3/Programowanie obiektowe/Zadania/Zadania01/ContactManager/bin/Debug/netcoreapp3.0/ContactManager.runtimeconfig.json
+/Users/pandarek/Dropbox/WSB/Rok 2/Semestr-3/Programowanie obiektowe/Zadania/Zadania01/ContactManager/bin/Debug/netcoreapp3.0/ContactManager.runtimeconfig.dev.json
+/Users/pandarek/Dropbox/WSB/Rok 2/Semestr-3/Programowanie obiektowe/Zadania/Zadania01/ContactManager/bin/Debug/netcoreapp3.0/ContactManager.dll
+/Users/pandarek/Dropbox/WSB/Rok 2/Semestr-3/Programowanie obiektowe/Zadania/Zadania01/ContactManager/bin/Debug/netcoreapp3.0/ContactManager.pdb
+/Users/pandarek/Dropbox/WSB/Rok 2/Semestr-3/Programowanie obiektowe/Zadania/Zadania01/ContactManager/obj/Debug/netcoreapp3.0/ContactManager.csprojAssemblyReference.cache
+/Users/pandarek/Dropbox/WSB/Rok 2/Semestr-3/Programowanie obiektowe/Zadania/Zadania01/ContactManager/obj/Debug/netcoreapp3.0/ContactManager.AssemblyInfoInputs.cache
+/Users/pandarek/Dropbox/WSB/Rok 2/Semestr-3/Programowanie obiektowe/Zadania/Zadania01/ContactManager/obj/Debug/netcoreapp3.0/ContactManager.AssemblyInfo.cs
+/Users/pandarek/Dropbox/WSB/Rok 2/Semestr-3/Programowanie obiektowe/Zadania/Zadania01/ContactManager/obj/Debug/netcoreapp3.0/ContactManager.dll
+/Users/pandarek/Dropbox/WSB/Rok 2/Semestr-3/Programowanie obiektowe/Zadania/Zadania01/ContactManager/obj/Debug/netcoreapp3.0/ContactManager.pdb
