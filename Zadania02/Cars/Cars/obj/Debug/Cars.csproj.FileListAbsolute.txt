@@ -1,6 +1,0 @@
-C:\Users\student\Desktop\Cw2\Cars\Cars\bin\Debug\Cars.exe.config
-C:\Users\student\Desktop\Cw2\Cars\Cars\obj\Debug\Cars.csprojResolveAssemblyReference.cache
-C:\Users\student\Desktop\Cw2\Cars\Cars\bin\Debug\Cars.exe
-C:\Users\student\Desktop\Cw2\Cars\Cars\bin\Debug\Cars.pdb
-C:\Users\student\Desktop\Cw2\Cars\Cars\obj\Debug\Cars.exe
-C:\Users\student\Desktop\Cw2\Cars\Cars\obj\Debug\Cars.pdb

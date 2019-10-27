@@ -7,6 +7,6 @@
 </ul>
 <h2>Zadania 02</h2>
 <ul>
-  <li>Cars</li>
+  <li>Cars - Konstruktory</li>
   <li>Person - ćwiczenia z polimorfizmu</li>
 </ul>
