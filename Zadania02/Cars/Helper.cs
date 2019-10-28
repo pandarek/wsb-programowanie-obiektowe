@@ -16,22 +16,37 @@ namespace Cars
             }
             return result;
         }
-        public static void AddCar()
+
+        public static double PodajLiczbeDouble(string wiadomosc)
         {
-            Console.WriteLine("Marka samochodu:");
-            var brand = Console.ReadLine();
-            Console.WriteLine("Model samochodu:");
-            var model = Console.ReadLine();
-            var enginecapacity = Helper.PodajLiczbe("Pojemniść silnika: ");
-            var fuel = Helper.PodajLiczbe("Ile masz paliwa: ");
-            var distance = Helper.PodajLiczbe("Jaki dystans chce pokonać: ");
 
-            Car car = new Car(brand, model, enginecapacity, fuel);
+            bool udalosoe = false;
+            double result = 0;
+            while (!udalosoe)
+            {
+                Console.Write(wiadomosc);
+                udalosoe = double.TryParse(Console.ReadLine(), out result);
 
-            car.go(distance);
+            }
+            return result;
+        }
 
-
+        public static void MainMenu()
+        {
+            Console.Clear();
+            Console.WriteLine("- Menu -\n");
+            Console.WriteLine("1. Dane samochodu");
+            Console.WriteLine("2. Jazda");
+            Console.WriteLine("3. Tankowanie");
+            Console.WriteLine("4. Wyjście");
+        }
+        public static void Wait()
+        {
+            Console.WriteLine("Naciśnij dowolny klawisz...");
+            Console.ReadKey();
 
         }
+
+
     }
 }

@@ -8,14 +8,14 @@ namespace Cars
         private int _tankcapacity;
         private const int _defaultcapacity = 55;
 
-        public Engine(int _enginecapacity, int _fuel)
+        public Engine(int _enginecapacity, double _fuel)
         {
             this._enginecapacity = _enginecapacity;
             this._fuel = _fuel;
             this._tankcapacity = _defaultcapacity;
 
         }
-        public Engine(int _enginecapacity, int _fuel, int _tankcapacity) : this(_enginecapacity, _fuel)
+        public Engine(int _enginecapacity, double _fuel, int _tankcapacity) : this(_enginecapacity, _fuel)
         {
 
             this._tankcapacity = _tankcapacity;
