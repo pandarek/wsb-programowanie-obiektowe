@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading;
 namespace Cars
 {
     public class Car
@@ -49,42 +48,43 @@ namespace Cars
 
         public void go(int distance)
         {
-            if (_engine.Fuel < 8)
-            {
-                Console.WriteLine("UWAGA: Masz mniej niż 8L paliwa...");
-            }
-            Console.WriteLine($"\nIlość paliwa na starcie: {_engine.Fuel}\n");
-            Console.WriteLine("Jadę...");
 
-            _engine.work(distance);
+                if (_engine.Fuel < 8)
+                {
+                    Console.WriteLine("UWAGA: Masz mniej niż 8L paliwa...");
+                }
+                Console.WriteLine($"\nIlość paliwa na starcie: {_engine.Fuel}\n");
+                Console.WriteLine("Jadę...");
 
-            Thread.Sleep(distance * 100);
+                _engine.work(distance);
 
-            if (_engine.Fuel <= 0)
-            {
-                Console.WriteLine("Koniec Paliwa...");
-                _engine.Fuel = 0;
-            }
-            else
-            {
-                Console.WriteLine($"\nIlość paliwa na mecie: {_engine.Fuel}\n");
-                Console.WriteLine("Jestem");
-                Console.WriteLine();
-            }
+                Helper.distanceAnim(distance);
 
+                if (_engine.Fuel <= 0)
+                {
+                    Console.WriteLine("Koniec Paliwa...");
+                    _engine.Fuel = 0;
+                }
+                else
+                {
+                    Console.WriteLine($"\nIlość paliwa na mecie: {_engine.Fuel}\n");
+                    Console.WriteLine("Jestem");
+                    Console.WriteLine();
+                }
+            
 
         }
-        public void tankuj()
+        public void refueling()
         {
             double tank_station;
             bool succes = false;
 
             while (!succes)
             {
-                               
+
                 tank_station = Helper.PodajLiczbeDouble("Ile zatankować: ");
 
-                if ((_engine.Fuel + tank_station) >= _engine.Tankcapacity)
+                if ((_engine.Fuel + tank_station) > _engine.Tankcapacity)
                 {
                     Console.WriteLine($"Maksymalnie możesz zatankować {_engine.Tankcapacity - _engine.Fuel}");
                 }
@@ -94,7 +94,7 @@ namespace Cars
                     succes = true;
                 }
             }
-            
+
         }
 
     }

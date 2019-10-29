@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Threading;
+using System.Diagnostics;
 namespace Cars
 {
     public class Helper
@@ -45,6 +47,19 @@ namespace Cars
             Console.WriteLine("Naciśnij dowolny klawisz...");
             Console.ReadKey();
 
+        }
+        public static void distanceAnim(int distance)
+        {
+            //Stopwatch stoper = new Stopwatch();
+            //stoper.Start();
+            for (int i = 1; i <= distance; i++)
+            {
+                Console.Write($"\rProgress: {i} km   ");
+                Thread.Sleep(100);
+            }
+            //stoper.Stop();
+
+            //Console.WriteLine(stoper.Elapsed);
         }
 
 

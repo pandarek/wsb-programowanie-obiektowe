@@ -24,8 +24,6 @@ namespace Cars
 
             //car3.go(20);
 
-         
-
            
             Console.Write("Marka samochodu: ");
             var brand = Console.ReadLine();
@@ -33,17 +31,25 @@ namespace Cars
             var model = Console.ReadLine();
             var enginecapacity = Helper.PodajLiczbe("Pojemność silnika (cm³): ");
             var tankcapacity = Helper.PodajLiczbe("Pojemność zbiornika paliwa (l): ");
-            var fuel = Helper.PodajLiczbeDouble("Ile masz paliwa (l): ");
-            
+            bool fuel_check = false;
 
+            double fuel = 0;
+
+            while (!fuel_check)
+            {
+                 fuel = Helper.PodajLiczbeDouble("Ile masz paliwa (l): ");
+                if (fuel > tankcapacity)
+                {
+                    Console.WriteLine($"Za dużo paliwa, pojemność zbiornika: {tankcapacity} l");
+                }
+                else
+                {
+                    fuel_check = true;
+                }
+            }
+            
             Car car = new Car(brand, model, enginecapacity, fuel, tankcapacity);
-
-            //car.go(distance);
-
-            
-
-            
-
+                   
             bool exit = false;
 
             while (!exit)
@@ -59,7 +65,7 @@ namespace Cars
                     case 2:
                         if (car.Fuel <= 0)
                         {
-                            Console.WriteLine("\nNie ma paliwa\n");
+                            Console.WriteLine("\nNie ma paliwa, nie możesz jechać\n");
                             Helper.Wait();
                             break;
                         }
@@ -69,7 +75,7 @@ namespace Cars
                         break;
 
                     case 3:
-                        car.tankuj();
+                        car.refueling();
                         Helper.Wait();
                         break;
                         
@@ -79,12 +85,6 @@ namespace Cars
 
                 }
             }
-
-            
-
-
-            //Console.WriteLine("Naciśnij dowolny kalwisz...");
-            //Console.ReadKey();
 
         }
     }
