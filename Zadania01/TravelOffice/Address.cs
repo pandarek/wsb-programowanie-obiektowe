@@ -7,7 +7,7 @@ namespace TravelOffice
         private string zip;
         private string city;
 
-        public Address(string street,string zip, string city)
+        public Address(string street, string zip, string city)
         {
             this.street = street;
             this.zip = zip;

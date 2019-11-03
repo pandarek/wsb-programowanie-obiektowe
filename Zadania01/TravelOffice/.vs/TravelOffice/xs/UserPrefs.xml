@@ -1,11 +1,17 @@
-﻿<Properties StartupConfiguration="{6516C17D-62A4-47E1-B551-BAB2E057E474}|Default">
-  <MonoDevelop.Ide.Workbench>
+﻿<Properties StartupConfiguration="{FFC7F2CE-1459-4BC3-B47C-F12065C4A1A3}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Date.cs">
+    <Files>
+      <File FileName="Customer.cs" Line="9" Column="1" />
+      <File FileName="TravelOffice.cs" Line="58" Column="1" />
+      <File FileName="Address.cs" Line="1" Column="1" />
+      <File FileName="Date.cs" Line="1" Column="1" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="TravelOffice" expanded="True">
             <Node name="TravelOffice" expanded="True">
-              <Node name="Trip.cs" selected="True" />
+              <Node name="Date.cs" selected="True" />
             </Node>
           </Node>
         </State>

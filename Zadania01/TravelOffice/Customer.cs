@@ -7,8 +7,6 @@ namespace TravelOffice
         private Address address;
         private Trip trip;
 
-        
-
         public string Name
         {
             get => name;
@@ -20,7 +18,7 @@ namespace TravelOffice
             get => address;
 
             set => address = value;
-           
+
         }
         public Trip Trip
         {
@@ -35,7 +33,12 @@ namespace TravelOffice
 
         public string getInfo()
         {
-           return $"Klient {name} \n {address.getInfo()} \n {trip.getInfo()}";
+            return $"Klient {name} \n {address.getInfo()} \n {trip.getInfo()}";
+        }
+
+        public static implicit operator string(Customer v)
+        {
+            throw new NotImplementedException();
         }
     }
 }
