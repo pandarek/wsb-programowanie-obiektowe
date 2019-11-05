@@ -3,42 +3,37 @@ namespace TravelOffice
 {
     public class Customer
     {
-        private string name;
-        private Address address;
-        private Trip trip;
+        private string _name;
+        private Address _address;
+        private Trip _trip;
 
         public string Name
         {
-            get => name;
-            set => name = value;
+            get => _name;
+            set => _name = value;
         }
 
         public Address Address
         {
-            get => address;
-
-            set => address = value;
+            get => _address;
+            set => _address = value;
 
         }
         public Trip Trip
         {
-            get => trip;
-            set => trip = value;
+            get => _trip;
+            set => _trip = value;
         }
 
         public Customer(string name)
         {
-            this.name = name;
+            this._name = name;
         }
 
         public string getInfo()
-        {
-            return $"Klient {name} \n {address.getInfo()} \n {trip.getInfo()}";
-        }
 
-        public static implicit operator string(Customer v)
         {
-            throw new NotImplementedException();
+            return $"Klient {Name} \n {Address} \n {Trip}";
         }
     }
 }

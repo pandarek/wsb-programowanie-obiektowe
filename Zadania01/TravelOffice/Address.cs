@@ -3,20 +3,20 @@ namespace TravelOffice
 {
     public class Address
     {
-        private string street;
-        private string zip;
-        private string city;
+        private string _street;
+        private string _zip;
+        private string _city;
 
         public Address(string street, string zip, string city)
         {
-            this.street = street;
-            this.zip = zip;
-            this.city = city;
+            this._street = street;
+            this._zip = zip;
+            this._city = city;
         }
 
-        public string getInfo()
+        public override string ToString()
         {
-            return $"Adres: {street}, {zip} {city}";
+            return $"Adres: {_street}, {_zip} {_city}";
         }
     }
 }

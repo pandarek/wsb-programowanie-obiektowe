@@ -1,53 +1,19 @@
 ﻿using System;
+using System.Text;
+
 namespace TravelOffice
 {
     public class TravelOffice
     {
-
-
-        static void Main(string[] args)
-        {
-
-            Date start = new Date(2019, 11, 12);
-            Date end = new Date(2019, 11, 30);
-
-            //klient 1
-            Customer customer1 = new Customer("Pan Darek");
-            Address address1 = new Address("Kuśnierska 4", "62-020", "Swarzędz");
-
-            Trip trip1 = new Trip(start, end, "Poznań");
-
-            customer1.Address = address1;
-            customer1.Trip = trip1;
-
-            //klient 2
-            Customer customer2 = new Customer("Karolona Kowalska");
-            Address address2 = new Address("Szkolna 20/3", "60-241", "Wrocław");
-
-            customer2.Address = address2;
-            customer2.Trip = trip1;
-
-            //klient 3
-            Customer customer3 = new Customer("Adam Nowak");
-            Address address3 = new Address("Oryfeusza 18", "82-241", "Gdańsk");
-
-            Trip trip2 = new Trip(start, end, "Warszawa");
-
-            customer3.Address = address3;
-            customer3.Trip = trip2;
-
-            //dodanie klienta do bazy
-            addCustomer(customer1);
-            addCustomer(customer2);
-            addCustomer(customer2);
-
-            //raport z biura
-            getInfo();
-
-        }
         static string[] customers = new string[1];
 
-        private static void addCustomer(Customer customer)
+        public TravelOffice() {
+
+            Console.WriteLine("Biuro podróży utworzone :)");
+
+        }
+
+        public void AddCustomer(Customer customer)
         {
 
             if (customers[0] == null)
@@ -68,20 +34,24 @@ namespace TravelOffice
                 customers = temp;
             }
         }
-        private static string getCustomerCount()
+        public void getCustomerCount()
         {
-            return $"Ilość zarejestrowanych klientów: {customers.Length}";
+            Console.WriteLine($"Ilość zarejestrowanych klientów: {customers.Length}");
         }
-        private static void getInfo()
+        public string getInfo()
         {
-            Console.WriteLine("RAPORT BIURA\n---------------------");
-            Console.WriteLine($"{getCustomerCount()}\n");
+            StringBuilder stringB = new StringBuilder();
 
-            foreach (var customer in customers)
+            stringB.Append("RAPORT BIURA\n---------------------");
+            stringB.Append($"\nIlość zarejestrowanych klientów: {customers.Length}\n\n");
+                       
+            foreach (string customer in customers)
             {
-                Console.WriteLine($"{customer}\n");
+                stringB.Append($"{customer}\n");
 
             }
+            return stringB.ToString();
         }
+               
     }
 }

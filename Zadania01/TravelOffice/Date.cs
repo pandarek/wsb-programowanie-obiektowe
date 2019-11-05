@@ -3,36 +3,46 @@ namespace TravelOffice
 {
     public class Date
     {
-        private int rok;
-        private int miesiac;
-        private int dzien;
+        private int _rok;
+        private int _miesiac;
+        private int _dzien;
 
         public int Rok
         {
             get
             {
-                return rok;
+                return _rok;
             }
 
             set
             {
-                rok = value;
+                _rok = value;
             }
         }
 
-        public int Dzien { get; set; }
+        public int Dzien
+        {
+            get => _dzien;
+            set => _dzien = value;
+        }
+
+        public int Miesiac
+        {
+            get => _miesiac;
+            set => _miesiac = value;
+        }
 
         public Date(int rok, int miesiac, int dzien)
         {
-            this.rok = rok;
-            this.miesiac = miesiac;
-            this.Dzien = dzien;
+            this._rok = rok;
+            this._miesiac = miesiac;
+            this._dzien = dzien;
 
         }
 
         public override string ToString()
         {
-            return rok + "-" + miesiac + "-" + Dzien;
+            return Rok + "-" + Miesiac + "-" + Dzien;
         }
 
     }
