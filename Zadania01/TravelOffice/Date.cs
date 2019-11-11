@@ -1,11 +1,14 @@
 ﻿using System;
 namespace TravelOffice
 {
+    [Serializable]
     public class Date
     {
         private int _rok;
         private int _miesiac;
         private int _dzien;
+
+        public Date() { }
 
         public int Rok
         {

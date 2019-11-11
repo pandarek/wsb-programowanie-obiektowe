@@ -1,11 +1,16 @@
 ﻿using System;
+using System.Xml.Serialization;
+
 namespace TravelOffice
 {
+     
     public class DomesticTrip : Trip
     {
         private const int DefaultDiscount = 10;
 
         private int _ownArrivalDiscount;
+
+        public DomesticTrip() { }
 
         public DomesticTrip(Date start, Date end, string destination, int OwnArrivalDiscount = DefaultDiscount) : base(start, end, destination)
         {

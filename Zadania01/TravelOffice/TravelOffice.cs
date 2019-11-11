@@ -5,47 +5,68 @@ namespace TravelOffice
 {
     public class TravelOffice
     {
-        static string[] customers = new string[1];
+        private Customer[] _customers = new Customer[1];
 
         public TravelOffice() {
 
             Console.WriteLine("Biuro podróży utworzone :)");
 
         }
+        public Customer[] Customers
+        {
+            get
+            {
+                return _customers;
+            }
+            set
+            {
+                _customers = value;
+            }
+        }
+        public int CustomerCount => _customers.Length;
+
 
         public void AddCustomer(Customer customer)
         {
 
-            if (customers[0] == null)
+            if (_customers[0] == null)
             {
-                customers[0] = customer.getInfo();
+                _customers[0] = customer;
             }
             else
             {
-                int records = customers.Length;
+                int records = _customers.Length;
 
-                string[] temp = new string[records + 1];
-                customers.CopyTo(temp, 0);
+                Customer[] temp = new Customer[records + 1];
+                _customers.CopyTo(temp, 0);
 
-                temp[records] = customer.getInfo();
+                temp[records] = customer;
 
-                customers = new string[records];
+                _customers = new Customer[records];
 
-                customers = temp;
+                _customers = temp;
             }
         }
-        public void getCustomerCount()
+        public void ClearCustomers()
         {
-            Console.WriteLine($"Ilość zarejestrowanych klientów: {customers.Length}");
+            Array.Clear(_customers, 0, CustomerCount);
+            _customers = new Customer[1];
         }
+        
         public string getInfo()
         {
             StringBuilder stringB = new StringBuilder();
 
+            int customerCount = CustomerCount;
+            if (_customers[0] == null)
+            {
+                customerCount = 0;
+            }
+
             stringB.Append("RAPORT BIURA\n---------------------");
-            stringB.Append($"\nIlość zarejestrowanych klientów: {customers.Length}\n\n");
+            stringB.Append($"\nIlość zarejestrowanych klientów: {customerCount}\n\n");
                        
-            foreach (string customer in customers)
+            foreach (var customer in _customers)
             {
                 stringB.Append($"{customer}\n");
 
