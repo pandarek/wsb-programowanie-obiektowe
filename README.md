@@ -10,3 +10,8 @@
   <li>Cars - Konstruktory</li>
   <li>Person - ćwiczenia z polimorfizmu</li>
 </ul>
+<h2>Zadania 03</h2>
+<p>Dziedziczenie, abstrakcja, polimorfizm</p>
+<ul>
+  <li>Zadanie wprowadzające</li>
+</ul>
