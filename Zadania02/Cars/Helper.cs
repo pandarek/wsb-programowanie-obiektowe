@@ -37,10 +37,14 @@ namespace Cars
         {
             Console.Clear();
             Console.WriteLine("- Menu -\n");
-            Console.WriteLine("1. Dane samochodu");
-            Console.WriteLine("2. Jazda");
-            Console.WriteLine("3. Tankowanie");
-            Console.WriteLine("4. Wyjście");
+            Console.WriteLine("1. Podaj dane samochodu");
+            Console.WriteLine("2. Zapisz dane samochodu");
+            Console.WriteLine("3. Wczitaj dane samochodu");
+            Console.WriteLine("-----");
+            Console.WriteLine("4. Dane samochodu");
+            Console.WriteLine("5. Jazda");
+            Console.WriteLine("6. Tankowanie");
+            Console.WriteLine("7. Wyjście");
         }
         public static void Wait()
         {

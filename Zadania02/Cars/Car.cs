@@ -1,11 +1,15 @@
 ﻿using System;
+using System.Xml.Serialization;
+
 namespace Cars
 {
+    [Serializable]
     public class Car
     {
         private string _brand;
         private string _model;
         private Engine _engine;
+        private int _todal_distance;
 
         public Car(string _brand, string _model, int _enginecapacity, double _fuel, int _tankcapacity)
         {
@@ -30,17 +34,41 @@ namespace Cars
             this._model = _model;
             this._engine = _engine;
         }
+
+        public Car() {
+            Console.WriteLine("Auto domyślne");
+        }
+
+        public string Brand { get => _brand; set => _brand = value; }
+        public string Model { get => _model; set => _model = value; }
+        public Engine Engine { get => _engine; set => _engine = value; }
+
+        [XmlIgnore]
         public double Fuel
         {
-            get => (int)_engine.Fuel;
+            get => _engine.Fuel;
             set => _engine.Fuel = value;
+        }
+
+        public int Total_distance
+        {
+            get => _todal_distance;
+            set => _todal_distance = value;
         }
 
 
         public string CarInfo()
         {
+            try
+            {
+                return $"\nMarka:\t\t\t{_brand}\nModel:\t\t\t{_model}\nPojemność:\t\t{_engine.Enginecapacity} cm³\nZbiornik paliwa:\t{_engine.Tankcapacity}\nIlość paliwa:\t\t{_engine.Fuel}\nCałkowity przebieg:\t\t{_todal_distance}\n";
 
-            return $"\nMarka:\t\t\t{_brand}\nModel:\t\t\t{_model}\nPojemność:\t\t{_engine.Enginecapacity} cm³\nZbiornik paliwa:\t{_engine.Tankcapacity}\nIlość paliwa:\t\t{_engine.Fuel}\n";
+            }
+            catch (Exception ex)
+            {
+               return ex.Message;
+            }
+
         }
 
 
@@ -71,6 +99,7 @@ namespace Cars
                     Console.WriteLine("Jestem");
                     Console.WriteLine();
                 }
+            _todal_distance += distance;
             
 
         }

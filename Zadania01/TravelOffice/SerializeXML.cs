@@ -7,7 +7,7 @@ namespace TravelOffice
     public class SerializeXML
     {
         XmlSerializer serializer = new XmlSerializer(typeof(Customer[]), new Type[] { typeof(Trip), typeof(DomesticTrip), typeof(AbroadTrip), typeof (Date) });
-        
+
         public void serialize(Customer[] customers)
         {
            
@@ -20,7 +20,7 @@ namespace TravelOffice
         }
         public void deserialize(TravelOffice travelOffice)
         {
-            
+
             try
             {
                 using (TextReader reader = new StreamReader(@"./mojedane.xml"))

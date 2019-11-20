@@ -1,6 +1,7 @@
 ﻿using System;
 namespace Cars
 {
+    [Serializable]
     public class Engine
     {
         private int _enginecapacity;
@@ -21,6 +22,7 @@ namespace Cars
             this._tankcapacity = _tankcapacity;
 
         }
+        public Engine() { }
 
         public int Enginecapacity
         {
