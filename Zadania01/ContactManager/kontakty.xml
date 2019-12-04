@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Kontakty xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Osoba>
+    <Imie>wqe</Imie>
+    <Nazisko>qe</Nazisko>
+    <Adres>
+      <Ulica>qweqe</Ulica>
+      <NumerDomu>qwe</NumerDomu>
+      <NumerMieszkania>qweqe</NumerMieszkania>
+      <KodPocztowy>qe</KodPocztowy>
+      <Miasto>qe</Miasto>
+      <Panstwo>qe</Panstwo>
+    </Adres>
+    <Wiek>23</Wiek>
+  </Osoba>
+  <Osoba>
+    <Imie>qqweqe</Imie>
+    <Nazisko>rty</Nazisko>
+    <Adres>
+      <Ulica>rett</Ulica>
+      <NumerDomu>ert</NumerDomu>
+      <NumerMieszkania>et</NumerMieszkania>
+      <KodPocztowy>ert</KodPocztowy>
+      <Miasto>ert</Miasto>
+      <Panstwo>ert</Panstwo>
+    </Adres>
+    <Wiek>545</Wiek>
+  </Osoba>
+</Kontakty>
