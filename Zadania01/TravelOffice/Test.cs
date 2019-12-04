@@ -18,7 +18,7 @@ namespace TravelOffice
             //try
             //{
             //    using (TextReader reader = new StreamReader(@"./mojedane.xml"))
-            //    {                    
+            //    {
 
             //        travelOffice.Customers = (Customer[]) deserializer.Deserialize(reader);
 
@@ -39,7 +39,7 @@ namespace TravelOffice
             {
                 Helper.menu();
                 
-           
+
 
                 switch (Helper.readcorrectkey("Chose option...: "))
                 {
@@ -121,10 +121,10 @@ namespace TravelOffice
 
             //raport z biura
 
-            
-            
+
+
         }
-        
+
 
     }
 }

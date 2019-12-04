@@ -16,7 +16,7 @@ namespace TravelOffice
             this._zip = zip;
             this._city = city;
         }
-                
+
         public string Zip { get => _zip; set => _zip = value; }
 
         public string City { get => _city; set => _city = value; }

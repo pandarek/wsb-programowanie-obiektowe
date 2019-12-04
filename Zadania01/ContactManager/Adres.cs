@@ -1,6 +1,7 @@
 ﻿using System;
 namespace ContactManager
 {
+    [Serializable]
     public class Adres
     {
         private string _ulica;
@@ -23,6 +24,12 @@ namespace ContactManager
 
         }
 
+        public string Ulica { get => _ulica; set => _ulica = value; }
+        public string NumerDomu { get => _numer_domu; set => _numer_domu = value; }
+        public string NumerMieszkania { get => _numer_mieszkania; set => _numer_mieszkania = value; }
+        public string KodPocztowy { get => _kod_pocztowy; set => _kod_pocztowy = value; }
+        public string Miasto { get => _miasto; set => _miasto = value; }
+        public string Panstwo { get => _panstwo; set => _panstwo = value; }
 
 
         public override string ToString()

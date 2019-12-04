@@ -1,19 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Xml.Serialization;
+
 namespace ContactManager
 {
+    [Serializable]
+    [XmlRoot("Kontakty")]
     public class Kontakty
     {
 
-
         private List<Osoba> _kontakty = new List<Osoba>();
-        private int _iloscKontaktow;
 
-        public int IloscKontaktow
-        {
-            get => _iloscKontaktow;
-            set => _iloscKontaktow = value;
-        }
+        public int IloscKontaktow { get; set; }
+
+        public List<Osoba> KontaktyLista { get => _kontakty; set => _kontakty = value; }
+        
+
 
         private Adres DodajAdres()
         {
@@ -40,30 +43,38 @@ namespace ContactManager
 
         public void DodajKontakt()
         {
+            bool kolejny;
+            int licznik = 0;
 
-            for (int i = 0; i < _iloscKontaktow; i++)
+            do
             {
+                licznik++;
                 Console.Clear();
-                Console.WriteLine($"Dane osoby {_iloscKontaktow}\n");
+                Console.WriteLine($"Dane osoby {licznik}\n");
                 Console.Write("Podaj imię:\t\t\t");
                 var imie = Console.ReadLine();
                 Console.Write("Podaj Nazwisko:\t\t\t");
                 var nazwisko = Console.ReadLine();
-
-
+                var wiek = Dodatki.PodajLiczbe("Podaj wiek:\t\t\t");
                 Adres adres = DodajAdres();
                 Osoba osoba = new Osoba();
-                osoba.UstawDane(imie, nazwisko, adres);
+                osoba.UstawDane(imie, nazwisko, wiek, adres);
                 _kontakty.Add(osoba);
+                kolejny = Dodatki.CzyKontynuowac("Czy dandać kolejny? [t/n]");
 
-            }
-            Console.Clear();
-            Console.WriteLine($"\nIlość dodanych kontaktów: {_iloscKontaktow}\n");
-            Dodatki.Czekaj();
+            } while (kolejny);
+
+           Console.WriteLine($"\nIlość dodanych kontaktów: {licznik}\n");
 
         }
-        public void PokazKontakt()
+        public void PokazKontakty()
         {
+            if (_kontakty.Count == 0)
+            {
+                Console.WriteLine("Brak kontaktów w bazie");
+                return;
+
+            }
             int i = 0;
             foreach (Osoba osoba in _kontakty)
             {
@@ -73,18 +84,24 @@ namespace ContactManager
             }
             Console.WriteLine();
         }
-        public void PokazDaneOsoby(int numerkontaktu)
+
+        public void PokazDaneOsoby()
         {
-            if (numerkontaktu >= _iloscKontaktow)
+            int numerkontaktu;
+
+            if (_kontakty.Count != 0)
             {
-                Console.WriteLine($"\n! Błędny numer kontaktu, ilość w bazie: {_iloscKontaktow}\n");
-                return;
-
+                numerkontaktu = Dodatki.PodajLiczbe("Podaj numer osoby do wyświetlenia: ");
+                Console.Clear();
+                Console.WriteLine("- Szczegóły kontaktu: -\n");
+                Console.WriteLine(_kontakty[numerkontaktu].PobierzAdres());
             }
-            Console.Clear();
-            Console.WriteLine("- Szczegóły kontaktu: -\n");
-            Console.WriteLine(_kontakty[numerkontaktu].PobierzAdres());
-
+            
         }
+        public void SostowanieNazwisko()
+        {
+            _kontakty.Sort(new CompareByNazwisko());
+        }
+      
     }
 }
