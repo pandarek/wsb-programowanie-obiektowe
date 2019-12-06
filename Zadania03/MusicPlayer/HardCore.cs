@@ -7,16 +7,16 @@ namespace MusicPlayer
         private string _title;
         private string _artist;
 
-        public HardCore(string Genre, string Title, string Artist) : base(Title, Artist)
+        public HardCore(string Artist, string Title, string Genre = "Hard Core") : base(Artist, Title)
         {
             this._genre = Genre;
             this._title = Title;
             this._artist = Artist;
         }
 
-        new public string Play()
+        public override string Play()
         {
-            return base.Play() + $"Gatunek: {_genre}";
+            return base.Play() + $", Gatunek: {_genre}";
         }
     }
 }

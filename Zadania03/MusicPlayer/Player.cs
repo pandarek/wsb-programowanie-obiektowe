@@ -12,17 +12,19 @@ namespace MusicPlayer
         {
      
             playlist.Add(song);
+            Console.WriteLine($"Utwór dodany...");
            
         }
 
         public void Remove(int songNumber)
         {
-
+            playlist.RemoveAt(songNumber);
+            Console.WriteLine("Utwór usunięty...");
         }
 
         public void Play(int songNumber)
         {
-
+            Console.WriteLine(playlist[songNumber].Play());
         }
     }
 }

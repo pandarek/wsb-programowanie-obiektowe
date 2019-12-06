@@ -3,21 +3,20 @@ namespace MusicPlayer
 {
     public class Electro : Song
     {
-
         private string _genre;
         private string _title;
         private string _artist;
 
-        public Electro(string Genre, string Title, string Artist) : base(Title, Artist)
+        public Electro(string Artist, string Title, string Genre = "Electro") : base(Artist, Title)
         {
             this._genre = Genre;
             this._title = Title;
             this._artist = Artist;
         }
 
-        new public string Play()
+        public override string Play()
         {
-            return base.Play() + $"Gatunek: {_genre}";
+            return base.Play() + $", Gatunek: {_genre}";
         }
     }
 }

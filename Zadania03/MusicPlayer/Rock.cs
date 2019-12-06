@@ -7,7 +7,7 @@ namespace MusicPlayer
         private string _title;
         private string _artist;
 
-        public Rock(string Title, string Artist, string Genre = "Rock") : base(Title, Artist)
+        public Rock(string Artist, string Title, string Genre = "Rock") : base(Artist, Title)
         {
             this.Title = Title;
             this._genre = Genre;
@@ -15,9 +15,9 @@ namespace MusicPlayer
             this._artist = Artist;
         }
 
-        new public string Play()
+        public override string Play()
         {
-            return base.Play() + $"Gatunek: {_genre}";
+            return base.Play() + $", Gatunek: {_genre}";
         }
     }
 }
