@@ -1,11 +1,13 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
+
 namespace Shape
 {
     public class Circle : Shapes
     {
 
-        public string _typek;
-        public int _radius;
+        private string _typek;
+        private int _radius;
 
         public Circle(int Radius, string Typek = "Circle")
         {
@@ -19,12 +21,12 @@ namespace Shape
 
         public override double Area()
         {
-            return 3.14 * (_radius * _radius);
+            return Math.PI * Math.Pow(_radius, 2);
            
         }
         public override double Circuit()
         {
-            return 2 * 3.14 * _radius;
+            return 2 * Math.PI *_radius;
         }
 
         public override string ToString()

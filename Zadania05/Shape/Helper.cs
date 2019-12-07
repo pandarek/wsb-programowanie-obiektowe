@@ -19,7 +19,7 @@ namespace Shape
         public static void DisplayMenu()
         {
             Console.Clear();
-            Console.WriteLine("[1] Generate sample data"); Console.WriteLine("[2] Default sort"); Console.WriteLine("[3] Sort by Perimeter"); Console.WriteLine("[4] Filter by Shape type"); Console.WriteLine("[5] Display shapes"); Console.WriteLine("[0] Exit");
+            Console.WriteLine("[1] Generate sample data"); Console.WriteLine("[2] Default sort"); Console.WriteLine("[3] Sort by Circut"); Console.WriteLine("[4] Filter by Shape type"); Console.WriteLine("[5] Display shapes"); Console.WriteLine("[0] Exit");
         }
 
         

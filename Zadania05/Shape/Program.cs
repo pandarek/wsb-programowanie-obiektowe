@@ -21,13 +21,14 @@ namespace Shape
                         SampleShapes();
                         break;
                     case 2:
-                    
+                        list.Sort();
                         break;
 
                     case 3:
-                   
+                        list.Sort(new CompareByCircut());
                         break;
                     case 4:
+                       //list.FindAll(s => s.Circuit >= 23).ForEach(Console.WriteLine);
 
                         break;
                     case 5:
@@ -56,14 +57,11 @@ namespace Shape
             Rectangle rectangle = new Rectangle(56, 32);
             Square square = new Square(43);
 
-            
-
-
+            list.Add(square);
             list.Add(circle);
             list.Add(triangle);
             list.Add(rectangle);
-            list.Add(square);
-
+            
             Console.WriteLine("\nKształty wygenerowane\n");
 
         }

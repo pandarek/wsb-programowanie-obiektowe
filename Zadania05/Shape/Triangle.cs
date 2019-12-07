@@ -13,7 +13,6 @@ namespace Shape
             this._sideA = SideA;
             this._sideB = SideB;
             this._sideC = SideC;
-
             this._typek = Typek;
         }
 
