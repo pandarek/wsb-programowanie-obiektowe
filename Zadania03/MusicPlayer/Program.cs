@@ -11,12 +11,12 @@ namespace MusicPlayer
 
             {
                 bool kolejny;
-                int licznik = 0;
+                int licznik = 1;
 
                 do
                 {
                     Console.Clear();
-                    Console.WriteLine($"Utwory {licznik}\n");
+                    Console.WriteLine($"Utwór {licznik}\n");
                     Console.Write("Podaj wykonawcę:\t");
                     var artist = Console.ReadLine();
                     Console.Write("Podaj tytuł:\t\t");
@@ -49,15 +49,23 @@ namespace MusicPlayer
 
                 } while (kolejny);
 
-                Console.WriteLine($"\nIlość dodanych utworów: {licznik}\n");
+                Console.Clear();
+
+                Console.WriteLine($"\nIlość utworów na playliście: {player.playlist.Count}");
+
+                player.playlist.Reverse();
 
 
-                for (int i = 0; i < player.playlist.Count; i++)
+                Console.WriteLine();
+                int i = player.playlist.Count;
+                while (i > 0)
                 {
-                    player.Play(i);
-                    player.Remove(i);
-
+                    player.Play(i - 1);
+                    player.Remove(i - 1);
+                    i--;
                 }
+
+                Console.WriteLine($"\nIlość utworów na playliście: {player.playlist.Count}");
             }
         }
     }

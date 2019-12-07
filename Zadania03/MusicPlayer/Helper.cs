@@ -36,13 +36,24 @@ namespace MusicPlayer
 
         public static void Menu()
         {
-            Console.WriteLine("1. Rock, 2. Hard Core, 3. Electro");
+            Console.WriteLine("\n1. Rock, 2. Hard Core, 3. Electro\n");
         }
 
         public static void Czekaj()
         {
             Console.WriteLine("Naciśnij dowolny klawisz...");
             Console.ReadKey();
+        }
+
+        public static void PlayAnim()
+        {
+            for (int i = 0; i < 6; i++)
+            {
+                Console.Write(".");
+                System.Threading.Thread.Sleep(500);
+
+            }
+            Console.WriteLine();
         }
     }
 }   
