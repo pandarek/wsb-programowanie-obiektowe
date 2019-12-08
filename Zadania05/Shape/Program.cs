@@ -29,8 +29,7 @@ namespace Shape
                         Helper.Czekaj();
                         break;
                     case 4:
-                        list.FindAll(s => s.Typek == "Circle").ForEach(Console.WriteLine);
-                        list.FindAll(s => s.Area() == 1849).ForEach(Console.WriteLine);
+                        SearchByType();
                         Helper.Czekaj();
                         break;
                     case 5:
@@ -66,6 +65,15 @@ namespace Shape
             
             Console.WriteLine("\nKształty wygenerowane\n");
 
+        }
+        public static void SearchByType() {
+            Console.WriteLine("Dostępne kształty: Circle, Triangle, Rectangle, Square");
+ 
+            Console.WriteLine("Podaj nazwę kształtu:");
+            string name = Console.ReadLine();
+            Console.WriteLine();
+            list.FindAll(s => s.GetTypeName() == name).ForEach(Console.WriteLine);
+            Console.WriteLine();
         }
 
     }

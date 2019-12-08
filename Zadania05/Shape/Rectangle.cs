@@ -15,17 +15,21 @@ namespace Shape
 
         }
 
-        public new string Typek { get => _typek; set => _typek = value; }
-
         public override double Area()
         {
-            return _sideA * _sideB;
+            return Math.Round(_sideA * _sideB, 2);
         }
 
         public override double Circuit()
         {
-            return (_sideA * 2) + (_sideB * 2);
+            return Math.Round((_sideA * 2) + (_sideB * 2), 2);
         }
+
+        public override string GetTypeName()
+        {
+            return _typek;
+        }
+
         public override string ToString()
         {
             return $"Typ: {_typek}, Pole: {Area()}, obwód: {Circuit()}";

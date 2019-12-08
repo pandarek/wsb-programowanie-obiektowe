@@ -12,8 +12,6 @@ namespace Shape
             bool udalosoe = false;
             int result = 0;
 
-
-
             while ((!udalosoe) || (result < 0))
             {
                 Console.Write(wiadomosc);

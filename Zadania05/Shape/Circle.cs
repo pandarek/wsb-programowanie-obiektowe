@@ -16,17 +16,21 @@ namespace Shape
 
         }
 
-        public new string Typek { get => _typek; set => _typek = value; }
         public int Radius { get; set; }
 
         public override double Area()
         {
-            return Math.PI * Math.Pow(_radius, 2);
+            return Math.Round(Math.PI * Math.Pow(_radius, 2), 2);
         }
 
         public override double Circuit()
         {
-            return 2 * Math.PI *_radius;
+            return Math.Round((2 * Math.PI *_radius),2);
+        }
+
+        public override string GetTypeName()
+        {
+            return _typek;
         }
 
         public override string ToString()

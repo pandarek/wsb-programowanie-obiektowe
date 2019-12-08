@@ -6,11 +6,10 @@ namespace Shape
 {
     public abstract class Shapes : IComparable<Shapes>
     {
-        private string _typek;
         public abstract double Area();
         public abstract double Circuit();
+        public abstract string GetTypeName();
 
-        public string Typek { get => _typek; set => _typek = value; }
 
         public int CompareTo(Shapes other)
         {
