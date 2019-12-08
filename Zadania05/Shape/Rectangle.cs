@@ -15,6 +15,8 @@ namespace Shape
 
         }
 
+        public new string Typek { get => _typek; set => _typek = value; }
+
         public override double Area()
         {
             return _sideA * _sideB;

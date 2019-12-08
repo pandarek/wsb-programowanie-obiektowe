@@ -9,39 +9,41 @@ namespace Shape
         {
             Console.WriteLine("Hello World!");
 
-            Helper.DisplayMenu();
-            
             bool end =false;
+
             do
             {
-
-                switch (Helper.GetInt("Wybierz opcję: "))
+                Helper.DisplayMenu();
+                switch (Helper.PodajLiczbe("Wybierz opcję: "))
                 {
                     case 1:
                         SampleShapes();
+                        Helper.Czekaj();
                         break;
                     case 2:
                         list.Sort();
+                        Helper.Czekaj();
                         break;
-
                     case 3:
                         list.Sort(new CompareByCircut());
+                        Helper.Czekaj();
                         break;
                     case 4:
-                       //list.FindAll(s => s.Circuit >= 23).ForEach(Console.WriteLine);
-
+                        list.FindAll(s => s.Typek == "Circle").ForEach(Console.WriteLine);
+                        list.FindAll(s => s.Area() == 1849).ForEach(Console.WriteLine);
+                        Helper.Czekaj();
                         break;
                     case 5:
                         foreach (var shape in list)
                         {
                             Console.WriteLine(shape);
                         }
-       
+                        Helper.Czekaj();
                         break;
                     case 0:
+                        Console.WriteLine("\nKoniec programu");
                         end = true;
                         break;
-
                     default:
                         break;
                 }
@@ -65,10 +67,6 @@ namespace Shape
             Console.WriteLine("\nKształty wygenerowane\n");
 
         }
-
-
-
-
 
     }
 }

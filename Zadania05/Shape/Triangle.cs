@@ -16,6 +16,8 @@ namespace Shape
             this._typek = Typek;
         }
 
+        public new string Typek { get => _typek; set => _typek = value; }
+
         public override double Area()
         {
             double p = (_sideA + _sideB + _sideC)/2;

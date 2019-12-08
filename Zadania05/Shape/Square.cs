@@ -15,11 +15,13 @@ namespace Shape
         //}
         public Square(double BokA) : base (BokA, BokA, Typek: "Sqare") { }
 
+        public new string Typek { get => Typek; set => Typek = value; }
+
         //public override double Area()
         //{
         //    return _bokA * _bokB;
         //}
-         
+
         //public override double Circuit()
         //{
         //    return (_bokA + _bokB) * 2;

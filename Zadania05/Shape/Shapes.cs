@@ -6,13 +6,17 @@ namespace Shape
 {
     public abstract class Shapes : IComparable<Shapes>
     {
+        private string _typek;
         public abstract double Area();
         public abstract double Circuit();
 
-        public int CompareTo([AllowNull] Shapes other)
+        public string Typek { get => _typek; set => _typek = value; }
+
+        public int CompareTo(Shapes other)
         {
             return ToString().CompareTo(other.ToString());
         }
+
     }
     class CompareByCircut : IComparer<Shapes>
     {
