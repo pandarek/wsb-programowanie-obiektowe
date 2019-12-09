@@ -5,13 +5,13 @@ namespace Shape
     {
         private double _sideA;
         private double _sideB;
-        private string _typek;
+        private string _shapetype;
 
-        public Rectangle(double SideA, double SideB, string Typek = "Rectangle")
+        public Rectangle(double SideA, double SideB, string ShapeType = "Rectangle")
         {
             this._sideA = SideA;
             this._sideB = SideB;
-            this._typek = Typek;
+            this._shapetype = ShapeType;
 
         }
 
@@ -27,12 +27,12 @@ namespace Shape
 
         public override string GetTypeName()
         {
-            return _typek;
+            return _shapetype;
         }
 
         public override string ToString()
         {
-            return $"Typ: {_typek}, Pole: {Area()}, obwód: {Circuit()}";
+            return $"Type: {_shapetype}\t Area: {Area()}\t Circuit: {Circuit()}";
         }
     }
 }

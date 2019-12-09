@@ -5,42 +5,44 @@ namespace Shape
 {
     class Program
     {
+        
+
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            PrintResults printResults;
 
+            printResults = DisplayShapes;
+            printResults += Helper.Wait;
+            
+ 
             bool end =false;
 
             do
             {
                 Helper.DisplayMenu();
-                switch (Helper.PodajLiczbe("Wybierz opcję: "))
+                switch (Helper.InputInt("\nChoose an option: "))
                 {
                     case 1:
                         SampleShapes();
-                        Helper.Czekaj();
+                        printResults();
                         break;
                     case 2:
                         list.Sort();
-                        Helper.Czekaj();
+                        printResults();
                         break;
                     case 3:
                         list.Sort(new CompareByCircut());
-                        Helper.Czekaj();
+                        printResults();
                         break;
                     case 4:
                         SearchByType();
-                        Helper.Czekaj();
+                        Helper.Wait();
                         break;
                     case 5:
-                        foreach (var shape in list)
-                        {
-                            Console.WriteLine(shape);
-                        }
-                        Helper.Czekaj();
+                        printResults();
                         break;
                     case 0:
-                        Console.WriteLine("\nKoniec programu");
+                        Console.WriteLine("\nEnd of program");
                         end = true;
                         break;
                     default:
@@ -49,7 +51,9 @@ namespace Shape
             } while (!end);
 
         }
+
         public static List<Shapes> list = new List<Shapes>();
+        public delegate void PrintResults();
 
         public static void SampleShapes()
         {
@@ -63,17 +67,25 @@ namespace Shape
             list.Add(triangle);
             list.Add(rectangle);
             
-            Console.WriteLine("\nKształty wygenerowane\n");
-
+            Console.WriteLine("\nShapes Generated\n");
         }
+
         public static void SearchByType() {
-            Console.WriteLine("Dostępne kształty: Circle, Triangle, Rectangle, Square");
+            Console.WriteLine("Available shapes: Circle, Triangle, Rectangle, Square");
  
-            Console.WriteLine("Podaj nazwę kształtu:");
+            Console.WriteLine("Enter shape name: ");
             string name = Console.ReadLine();
             Console.WriteLine();
             list.FindAll(s => s.GetTypeName() == name).ForEach(Console.WriteLine);
             Console.WriteLine();
+        }
+
+        public static void DisplayShapes()
+        {
+            foreach (var shape in list)
+            {
+                Console.WriteLine(shape);
+            }
         }
 
     }

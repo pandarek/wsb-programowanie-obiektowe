@@ -1,17 +1,16 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
 
 namespace Shape
 {
     public class Circle : Shapes
     {
 
-        private string _typek;
+        private string _shapetype;
         private int _radius;
 
-        public Circle(int Radius, string Typek = "Circle")
+        public Circle(int Radius, string ShapeType = "Circle")
         {
-            this._typek = Typek;
+            this._shapetype = ShapeType;
             this._radius = Radius;
 
         }
@@ -30,12 +29,12 @@ namespace Shape
 
         public override string GetTypeName()
         {
-            return _typek;
+            return _shapetype;
         }
 
         public override string ToString()
         {
-            return $"Typ: {_typek}, Pole: {Area()}, obwód: {Circuit()}";
+            return $"Type: {_shapetype}\t Area: {Area()}\t Circuit: {Circuit()}";
         }
     }
 }

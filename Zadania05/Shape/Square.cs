@@ -4,15 +4,15 @@ namespace Shape
     public class Square : Rectangle
     {
 
-        private string _typek;
+        private string _shapetype;
 
-        public Square(double BokA, string Typek = "Square") : base (BokA, BokA, Typek) {
-            this._typek = Typek;
+        public Square(double BokA, string ShapeType = "Square") : base (BokA, BokA, ShapeType) {
+            this._shapetype = ShapeType;
         }
 
         public override string GetTypeName()
         {
-            return _typek;
+            return _shapetype;
         }
 
     }

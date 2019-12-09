@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 
 namespace Shape
 {
@@ -17,6 +16,7 @@ namespace Shape
         }
 
     }
+
     class CompareByCircut : IComparer<Shapes>
     {
         public int Compare(Shapes x, Shapes y)

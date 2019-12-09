@@ -6,14 +6,14 @@ namespace Shape
         private double _sideA;
         private double _sideB;
         private double _sideC;
-        private string _typek;
+        private string _shapetype;
 
-        public Triangle(double SideA, double SideB, double SideC, string Typek = "Triangle")
+        public Triangle(double SideA, double SideB, double SideC, string ShapeType = "Triangle")
         {
             this._sideA = SideA;
             this._sideB = SideB;
             this._sideC = SideC;
-            this._typek = Typek;
+            this._shapetype = ShapeType;
         }
 
         public override double Area()
@@ -29,12 +29,12 @@ namespace Shape
 
         public override string GetTypeName()
         {
-            return _typek;
+            return _shapetype;
         }
 
         public override string ToString()
         {
-            return $"Typ: {_typek}, Pole: {Area()}, obwód: {Circuit()}";
+            return $"Type: {_shapetype}\t Area: {Area()}\t Circuit: {Circuit()}";
         }
     }
 }
