@@ -8,22 +8,55 @@ namespace HotelDrCsharp
         private int _roomsize;
         private Customer _customer;
 
-        public Room()
+        public Room() { }
+
+        public Room(int _roomnumber, int _roomsize, bool _status = false)
         {
-            _status = true;
-            _roomnumber = 0;
-            _roomsize = 1;
+            this._status = Status;
+            this._roomnumber = Roomnumber;
+            this._roomsize = Roomsize;
         }
 
-
+        public bool Status { get; set; }
+        public int Roomsize { get; set; }
+        public int Roomnumber { get; set; }
+        
         public void book()
         {
-
+            if (Status)
+            {
+                Console.WriteLine("\nPokój już zarezerwowany");
+                Helper.Wait();
+                
+            }
+            else
+            {
+                Status = true;
+                Console.WriteLine($"\nPokój {Roomnumber} Rezerwacja dokonana");
+                Helper.Wait();
+            }
         }
 
-        public void cancelreservations()
+        public void cancelreservation()
         {
+            if (!Status)
+            {
+                Console.WriteLine("\nPokój nie jest zarezerwowany");
+                Helper.Wait();
+            }
+            else
+            {
+                Status = false;
+                Console.WriteLine($"\nRezerwacja {Roomnumber} anulowana");
+                Helper.Wait();
+            }
+        }
 
+        public override string ToString()
+        {
+            string status = (Status == true) ? "rezerwcja" : "wolne";
+
+            return $"Pokój: {Roomnumber}, Status: {status}";
         }
     }
 }
