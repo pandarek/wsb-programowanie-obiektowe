@@ -6,7 +6,7 @@ namespace HotelDrCsharp
         public static void MainMenu() {
 
             Console.Clear();
-            Console.WriteLine("\nSystem rezerwacji HotelDrCsharp\n");
+            Console.WriteLine("System rezerwacji HotelDrCsharp\n");
             Console.WriteLine("Wybierz opcje: ");
 
             Console.WriteLine("1 - Dodaj rezerwacje");

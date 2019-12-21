@@ -21,9 +21,6 @@ namespace HotelDrCsharp
 
         };
 
-
-
-
         public void ToString()
         {
             

@@ -37,6 +37,11 @@ namespace HotelDrCsharp
                         roomnumber = (Helper.InputInt("\nPodaj numer pokoju: ") - 1);
                         Hotel.hotellist[roomnumber].cancelreservation();
                         break;
+                    case 3:
+                        roomnumber = (Helper.InputInt("\nPodaj numer pokoju: ") - 1);
+                        Console.WriteLine(Hotel.hotellist[roomnumber].ToString());
+                        Helper.Wait();
+                        break;
                     case 4:
                         hotel.ToString();
                         Helper.Wait();
