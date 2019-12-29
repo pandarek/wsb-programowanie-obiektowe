@@ -6,6 +6,7 @@ namespace HotelDrCsharp
         public static void MainMenu() {
 
             Console.Title = "DrCsharp - System Rezerwacji Hotelowej"; //nazwa konsoli
+            Console.ForegroundColor = ConsoleColor.Green; //kolor pierwszego planu konsoli
 
             Console.Clear();
             Console.WriteLine("\nSystem rezerwacji HotelDrCsharp\n");
