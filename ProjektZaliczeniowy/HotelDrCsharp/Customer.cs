@@ -8,6 +8,7 @@ namespace HotelDrCsharp
         //private Adres _adres;
         private int _wiek;
         private string _telefon;
+        private string _email;
 
         public string Imie { get => _imie; set => _imie = value; }
         public string Nazwisko { get => _nazwisko; set => _nazwisko = value; }
@@ -15,6 +16,7 @@ namespace HotelDrCsharp
         //public Adres Adres { get => _adres; set => _adres = value; }
 
         public string Telefon { get => _telefon; set => _telefon = value; }
+        public string Email { get => _email; set => _email = value; }
 
         public Customer()
         {
