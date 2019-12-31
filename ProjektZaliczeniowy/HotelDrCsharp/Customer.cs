@@ -1,4 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.IO;
+
 namespace HotelDrCsharp
 {
     public class Customer
@@ -18,6 +24,8 @@ namespace HotelDrCsharp
         public string Telefon { get => _telefon; set => _telefon = value; }
         public string Email { get => _email; set => _email = value; }
 
+        
+        //private static readonly List<Customer> customerlist = new List<Customer>
         public Customer()
         {
         }

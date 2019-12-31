@@ -17,7 +17,7 @@
 //    //TODO wstępna wersja do poprawki
 
 //--------------------------------------------------------
-//    private int _rok;
+//        private int _rok;
 //        private int _miesiac;
 //        private int _dzien;
 
@@ -74,9 +74,9 @@
 
 //        public override string ToString()
 //        {
-//            return { _rok: { 0:ffff} }
-//            + { _miesiac: { 0:MM} }
-//            + { _dzien: { 0:dd} };
+//            return { _rok: { 0:ffff} }+ { _miesiac: { 0:MM} }+ { _dzien: { 0:dd} };
+//      
+//            
 //        }
 
 
