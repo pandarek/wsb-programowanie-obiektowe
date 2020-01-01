@@ -17,7 +17,33 @@ namespace HotelDrCsharp
             new Room{Roomnumber = 6, Roomsize = 1},
             new Room{Roomnumber = 7, Roomsize = 1},
             new Room{Roomnumber = 8, Roomsize = 1},
+<<<<<<< HEAD
             new Room{Roomnumber = 9, Roomsize = 1}
+=======
+            new Room{Roomnumber = 9, Roomsize = 1},
+            new Room{Roomnumber = 10, Roomsize = 1},
+            new Room{Roomnumber = 11, Roomsize = 2},
+            new Room{Roomnumber = 12, Roomsize = 2},
+            new Room{Roomnumber = 13, Roomsize = 2},
+            new Room{Roomnumber = 14, Roomsize = 2},
+            new Room{Roomnumber = 15, Roomsize = 2},
+            new Room{Roomnumber = 16, Roomsize = 2},
+            new Room{Roomnumber = 17, Roomsize = 2},
+            new Room{Roomnumber = 18, Roomsize = 2},
+            new Room{Roomnumber = 19, Roomsize = 2},
+            new Room{Roomnumber = 20, Roomsize = 2},
+            new Room{Roomnumber = 21, Roomsize = 3},
+            new Room{Roomnumber = 22, Roomsize = 3},
+            new Room{Roomnumber = 23, Roomsize = 3},
+            new Room{Roomnumber = 24, Roomsize = 3},
+            new Room{Roomnumber = 25, Roomsize = 3},
+            new Room{Roomnumber = 26, Roomsize = 3},
+            new Room{Roomnumber = 27, Roomsize = 3},
+            new Room{Roomnumber = 28, Roomsize = 3},
+            new Room{Roomnumber = 29, Roomsize = 3},
+            new Room{Roomnumber = 30, Roomsize = 3}
+            
+>>>>>>> 7d4ed57ca288351d1eac0c11de060893820194f6
         };
 
         public void ToString()
