@@ -356,3 +356,5 @@ MigrationBackup/
 # End of https://www.gitignore.io/api/visualstudio
 .DS_Store
 .DS_Store?
+Zaliczenie/Zaliczenie.csproj
+Zaliczenie/Zaliczenie.sln
