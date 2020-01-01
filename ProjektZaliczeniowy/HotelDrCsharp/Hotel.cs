@@ -18,7 +18,6 @@ namespace HotelDrCsharp
             new Room{Roomnumber = 7, Roomsize = 1},
             new Room{Roomnumber = 8, Roomsize = 1},
             new Room{Roomnumber = 9, Roomsize = 1}
-
         };
 
         public void ToString()

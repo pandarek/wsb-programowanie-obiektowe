@@ -5,9 +5,9 @@ namespace Shape
 {
     public abstract class Shapes : IComparable<Shapes>
     {
-        public abstract double Area();
-        public abstract double Circuit();
-        public abstract string GetTypeName();
+        public abstract double TotalSurface();
+        public abstract double Volume();
+        public abstract string GetName();
 
 
         public int CompareTo(Shapes other)
