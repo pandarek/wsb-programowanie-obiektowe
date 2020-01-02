@@ -32,12 +32,11 @@ namespace HotelDrCsharp
         {
             bool startup = true;
 
-            //default admin password
-            string admin_name = "admin";
-            string admin_pass = "admin2020";
+            //default admin
+            Employee admin = new Admin("admin", "admin2020", "", "", "", "");
 
-            Employee admin = new Admin(admin_name, admin_pass, "", "", "", "");
-            Employee user = new Employee("user", "user", "", "", "", "");
+            //default user
+            Employee user = new Employee("user", "user2020", "", "", "", "");
 
             users = new List<Employee>();
 

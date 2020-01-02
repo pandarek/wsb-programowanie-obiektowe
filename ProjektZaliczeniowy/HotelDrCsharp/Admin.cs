@@ -1,6 +1,7 @@
 ﻿using System;
 namespace HotelDrCsharp
 {
+    [Serializable]
     public class Admin : Employee
     {
         private bool _isadmin;

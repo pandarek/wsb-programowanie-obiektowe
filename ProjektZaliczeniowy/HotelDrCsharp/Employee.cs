@@ -7,6 +7,7 @@ using System.IO;
 
 namespace HotelDrCsharp
 {
+    [Serializable]
     public class Employee
     {
         private string _imie;
@@ -26,7 +27,7 @@ namespace HotelDrCsharp
         public string Login { get => _login; set => _login = value; }
         public string Password { get => _password; set => _password = value; }
 
-        public Employee(string Login, string Password, string Imie, string Nazwisko, string Telefon, string Email, string Stanowisko = "employee")
+        public Employee(string Login, string Password, string Imie, string Nazwisko, string Telefon, string Email, string Stanowisko = "recepcja")
         {
             this._login = Login;
             this._password = Password;
@@ -42,7 +43,7 @@ namespace HotelDrCsharp
         }
         public override string ToString()
         {
-            return $"Login: {_login}";
+            return $"Login: {_login}, {_stanowisko}";
         }
     }
 }

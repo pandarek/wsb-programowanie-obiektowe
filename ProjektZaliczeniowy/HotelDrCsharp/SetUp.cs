@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+
 namespace HotelDrCsharp
 {
     public class Setup
@@ -22,12 +24,36 @@ namespace HotelDrCsharp
                         {
                             Console.WriteLine("Utwórz nowego użytkownika:");
 
-                            Console.WriteLine("Podaj login:");
-                            string login = Console.ReadLine();
+                            string login, password, password2;
+                            
+                            do
+                            {
+                                Console.WriteLine("Podaj login:");
+                                login = Console.ReadLine();
 
-                            Console.WriteLine("Podaj haslo:");
-                            string password = Helper.GetConsolePassword();
+                                if (UserExist(login))
+                                {
+                                    Console.WriteLine("Podany użytkownik istnieje");
 
+                                }
+
+                            } while (UserExist(login));
+
+                            do
+                            {
+                                Console.WriteLine("Podaj haslo:");
+                                password = Helper.GetConsolePassword();
+
+                                Console.WriteLine("Powtórz haslo:");
+                                password2 = Helper.GetConsolePassword();
+
+                                if (!PasswordTheSame(password, password2))
+                                {
+                                    Console.WriteLine("Hasła się różnią");
+                                }
+
+                            } while (!PasswordTheSame(password, password2));
+                            
                             Employee user = new Employee(login, password, "", "", "", "");
 
                             Program.users.Add(user);
@@ -72,11 +98,22 @@ namespace HotelDrCsharp
             Console.ForegroundColor = ConsoleColor.Black; //kolor pierwszego planu konsoli
 
             Console.Clear();
-            Console.WriteLine("System rezerwacji HotelDrCsharp\n");
+            Console.WriteLine("System rezerwacji HotelDrCsharp - ustawienia\n");
             Console.WriteLine("Wybierz opcje: ");
             Console.WriteLine("1 - Dodaj użytkownika");
             Console.WriteLine("2 - Lista użytkowników");
             Console.WriteLine("0 - Wyjście");
+        }
+
+        public static bool UserExist(string userlogin)
+        {
+            return Program.users.Any(item => item.Login == userlogin);
+        }
+        public static bool PasswordTheSame(string password1, string password2)
+        {
+            if (password1 == password2) return true;
+            return false;
+                       
         }
 
     }
