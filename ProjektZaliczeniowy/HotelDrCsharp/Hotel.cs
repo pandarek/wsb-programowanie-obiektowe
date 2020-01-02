@@ -17,9 +17,6 @@ namespace HotelDrCsharp
             new Room{Roomnumber = 6, Roomsize = 1},
             new Room{Roomnumber = 7, Roomsize = 1},
             new Room{Roomnumber = 8, Roomsize = 1},
-<<<<<<< HEAD
-            new Room{Roomnumber = 9, Roomsize = 1}
-=======
             new Room{Roomnumber = 9, Roomsize = 1},
             new Room{Roomnumber = 10, Roomsize = 1},
             new Room{Roomnumber = 11, Roomsize = 2},
@@ -43,7 +40,7 @@ namespace HotelDrCsharp
             new Room{Roomnumber = 29, Roomsize = 3},
             new Room{Roomnumber = 30, Roomsize = 3}
             
->>>>>>> 7d4ed57ca288351d1eac0c11de060893820194f6
+
         };
 
         public void ToString()

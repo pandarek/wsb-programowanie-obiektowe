@@ -10,118 +10,101 @@ namespace HotelDrCsharp
 {
     class Program
     {
-        //TODO sprawdzić i poprawić kod, szczególlnie pętle
+        //DONE sprawdzić i poprawić kod, szczególlnie pętle
         //TODO właściwa serializacja zapis użytkowników i haseł
-        //TODO nadanie tylko adminowi uprawnien do nadawania haseł
+        //DONE nadanie tylko adminowi uprawnien do nadawania haseł
+
 
         //--------------------------------------------------------------------
-        public static List<string> login = new List<string>();
-        public static List<string> password = new List<string>();
-        public static bool startup = true;
-        public static bool logged = false;
+        public static Employee currentuser;
+        public static List<Employee> users;
+        public static bool isadmin;
         //---------------------------------------------------------------------
         static void Main(string[] args)
         //---------------------------------------------------------------------
         {
+
             ProgramStart();
+
         }
-        
-        private static void ProgramStart()
-        {  
-     
-                while (startup == true)
+
+        public static void ProgramStart()
+        {
+            bool startup = true;
+
+            //default admin password
+            string admin_name = "admin";
+            string admin_pass = "admin2020";
+
+            Employee admin = new Admin(admin_name, admin_pass, "", "", "", "");
+            Employee user = new Employee("user", "user", "", "", "", "");
+
+            users = new List<Employee>();
+
+            users.Add(admin);
+            users.Add(user);
+
+            do
+            {
+
+                Console.Title = "DrCsharp - System Rezerwacji Hotelowej"; //nazwa konsoli
+                Console.BackgroundColor = ConsoleColor.Gray; //kolor tła konsoli
+                Console.ForegroundColor = ConsoleColor.Black; //kolor pierwszego planu konsoli
+
+                Console.Clear();
+
+                Console.WriteLine("\nSystem rezerwacji HotelDrCsharp\n");
+                Console.WriteLine("Podaj login:");
+                string username = Console.ReadLine();
+
+                Console.WriteLine("Podaj haslo:");
+                string password = Helper.GetConsolePassword();
+
+
+                bool logincorrect = users.Any(item => item.Login == username && item.Password == password);
+
+
+                if (logincorrect)
                 {
-                    Console.Title = "DrCsharp - System Rezerwacji Hotelowej"; //nazwa konsoli
-                    Console.BackgroundColor = ConsoleColor.Gray; //kolor tła konsoli
-                    Console.ForegroundColor = ConsoleColor.Black; //kolor pierwszego planu konsoli
-
-                    Console.Clear();
-                    Console.WriteLine("\nSystem rezerwacji HotelDrCsharp\n");
-                    Console.WriteLine("Wybierz literę: ");
-                    
-                    Console.WriteLine("L - Logowanie");
-                    Console.WriteLine("R - Rejestracja przez Administratora");
-
-                    ConsoleKeyInfo klawisz = Console.ReadKey();
-
-                    switch (klawisz.Key)
-                    {
-                            case ConsoleKey.L:
-                            Console.Clear();
-                            Console.WriteLine("Podaj login:");
-                            string username = Console.ReadLine();
-
-                            if (username == ("admin"))
-                            {
-                                Console.Clear();
-                            }
-                            //else
-                            //{
-                            //    Console.WriteLine("Nieprawidlowy uzytkownik!");
-                            //}
-
-                            Console.WriteLine("Podaj haslo:");
-                            string password = Console.ReadLine();
-
-                            
-                             Run(); ///działa wychodzi z pętli i przechodzi do właściwego programu :)
-                            
-                             break;
-
-
-                            case ConsoleKey.R:
-                            Console.Clear();
-                            Console.WriteLine("Utwórz nowego użytkownika:");
-
-                            Console.WriteLine("Podaj login:");
-                            username = Console.ReadLine();
-                            Console.WriteLine("Podaj haslo:");
-                            password = Console.ReadLine();
-
-                            using (StreamWriter sw = new StreamWriter("employees.txt"))
-                            {
-                                sw.WriteLine(username);
-                                sw.WriteLine(password);
-                                sw.Close();
-                            }           
-
-                            //Console.Read();
-
-                            break;
-                   
-                    }
+                    currentuser = users.Find(item => item.Login == username);
+                    startup = false;
+                    Run(); ///działa wychodzi z pętli i przechodzi do właściwego programu :)
 
                 }
+                else
+                {
+                    Console.WriteLine("Nieprawidlowy uzytkownik!");
+                    Helper.Wait();
+                }
+                Console.Clear();
+
+
+
+            } while (startup == true);
 
         }
+
+
+
         public static void Run()
         {
 
-            if (logged == true)
-            {
-                Helper.MainMenu();
-            }
-            
-
-
-         //---------------------------------------------------------------------
+            //---------------------------------------------------------------------
             bool end = false;
             int roomnumber;
 
             Hotel hotel = new Hotel();
 
-           // Hotel.hotellist[0].book();
+            // Hotel.hotellist[0].book();
             //hotel.ToString();
             //Hotel.hotellist[4].book();
             //Hotel.hotellist[3].Roomsize = 2;
             //hotel.ToString();
 
-           
-                        
-
             do
             {
                 Helper.MainMenu();
+                Console.WriteLine();
 
                 switch (Helper.InputInt("\nWybierz opcję: "))
                 {
@@ -152,7 +135,19 @@ namespace HotelDrCsharp
                         Hotel.hotellist.FindAll(s => s.Status != false).ForEach(Console.WriteLine);
                         Helper.Wait();
                         break;
-                    case 7:
+                    case 9:
+                        if (currentuser.IsAdminn())
+                        {
+                            Setup.Run();
+                        }
+                        else
+                        {
+                            Console.WriteLine("Nie masz uprawnień");
+                            Helper.Wait();
+                        }
+
+                        break;
+                    case 0:
                         end = true;
                         break;
                     default:
