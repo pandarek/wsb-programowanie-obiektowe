@@ -14,7 +14,7 @@ namespace HotelDrCsharp
 
             do
             {
-                AdminMenu();
+                SetupMenu();
                 Console.WriteLine();
 
                 switch (Helper.InputInt("\nWybierz opcję: "))
@@ -54,7 +54,7 @@ namespace HotelDrCsharp
 
                             } while (!PasswordTheSame(password, password2));
                             
-                            Employee user = new Employee(login, password, "", "", "", "");
+                            User user = new Employee(login, password, "", "", "", "");
 
                             Program.users.Add(user);
 
@@ -92,7 +92,7 @@ namespace HotelDrCsharp
             } while (!end);
         }
 
-        public static void AdminMenu()
+        public static void SetupMenu()
         {
             Console.BackgroundColor = ConsoleColor.Gray; //kolor tła konsoli
             Console.ForegroundColor = ConsoleColor.Black; //kolor pierwszego planu konsoli

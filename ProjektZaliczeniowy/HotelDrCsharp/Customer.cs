@@ -12,7 +12,6 @@ namespace HotelDrCsharp
         private string _imie;
         private string _nazwisko;
         //private Adres _adres;
-        private int _wiek;
         private string _telefon;
         private string _email;
 
@@ -25,9 +24,15 @@ namespace HotelDrCsharp
         public string Email { get => _email; set => _email = value; }
 
         
-        //private static readonly List<Customer> customerlist = new List<Customer>
-        public Customer()
+        public Customer(string Imie, string Nazwisko)
         {
+            this._imie = Imie;
+            this._nazwisko = Nazwisko;
+        }
+
+        public override string ToString()
+        {
+            return $"Imię: {_imie}, Nazwosko {_nazwisko}";
         }
     }
 }

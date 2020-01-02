@@ -39,19 +39,24 @@ namespace HotelDrCsharp
             new Room{Roomnumber = 28, Roomsize = 3},
             new Room{Roomnumber = 29, Roomsize = 3},
             new Room{Roomnumber = 30, Roomsize = 3}
-            
-
         };
 
         public void ToString()
         {
-            
             foreach (var item in hotellist)
             {
                 string status = (item.Status == true) ? "rezerwcja" : "wolne";
-                Console.WriteLine($"Numer pokoju: {item.Roomnumber}, Ilość pokoi: {item.Roomsize}, Status: {status}");
+                if (item.Status)
+                {
+                    Console.WriteLine($"Numer pokoju: {item.Roomnumber}, Ilość pokoi: {item.Roomsize}, Status: {status}");
+                    Console.WriteLine($"Klient: {item.Customer}");
+                }
+                else
+                {
+                    //string customer = (item.Status == true) ? $"\nKlinet: {item.Customer.ToString()}" : "";
+                    Console.WriteLine($"Numer pokoju: {item.Roomnumber}, Ilość pokoi: {item.Roomsize}, Status: {status}");
+                }
             }
-          
         }
     }
 }

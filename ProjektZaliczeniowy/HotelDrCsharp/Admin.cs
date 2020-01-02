@@ -2,7 +2,7 @@
 namespace HotelDrCsharp
 {
     [Serializable]
-    public class Admin : Employee
+    public class Admin : User
     {
         private bool _isadmin;
 

@@ -16,8 +16,8 @@ namespace HotelDrCsharp
 
 
         //--------------------------------------------------------------------
-        public static Employee currentuser;
-        public static List<Employee> users;
+        public static User currentuser;
+        public static List<User> users;
         public static bool isadmin;
         //---------------------------------------------------------------------
         static void Main(string[] args)
@@ -33,12 +33,12 @@ namespace HotelDrCsharp
             bool startup = true;
 
             //default admin
-            Employee admin = new Admin("admin", "admin2020", "", "", "", "");
+            User admin = new Admin("admin", "admin2020", "", "", "", "");
 
             //default user
-            Employee user = new Employee("user", "user2020", "", "", "", "");
+            User user = new Employee("user", "user2020", "", "", "", "");
 
-            users = new List<Employee>();
+            users = new List<User>();
 
             users.Add(admin);
             users.Add(user);

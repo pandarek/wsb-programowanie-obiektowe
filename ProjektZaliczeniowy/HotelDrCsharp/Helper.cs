@@ -24,6 +24,7 @@ namespace HotelDrCsharp
             Console.WriteLine("4 - Wyswietl wszystkie pokoje");
             Console.WriteLine("5 - Wyswietl wolne miejsca");
             Console.WriteLine("6 - Wyswietl zarezerwowane pokoje");
+            Console.WriteLine("---------------------------------");
             Console.WriteLine("9 - Ustawienia");
             Console.WriteLine("0 - Zamknij system");
         }
