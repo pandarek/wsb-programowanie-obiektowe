@@ -54,7 +54,7 @@ namespace HotelDrCsharp
 
                             } while (!PasswordTheSame(password, password2));
                             
-                            User user = new Employee(login, password, "", "", "", "");
+                            Employee user = new Employee(login, password, "", "", "", "");
 
                             Program.users.Add(user);
 

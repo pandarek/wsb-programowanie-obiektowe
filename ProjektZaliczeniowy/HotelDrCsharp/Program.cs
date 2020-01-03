@@ -11,9 +11,16 @@ namespace HotelDrCsharp
     class Program
     {
         //DONE sprawdzić i poprawić kod, szczególlnie pętle
-        //TODO właściwa serializacja zapis użytkowników i haseł
         //DONE nadanie tylko adminowi uprawnien do nadawania haseł
+        //DONE dodawanie daty rezerwacji
 
+        //TODO wyświetalnie reaerwacji (tabelka?)
+        //TODO sprawdzanie daty rezerwacji czy start nie jest cześniej niż koniec
+        //TODO wyliczenia kosztów rezerwacji
+        //TODO właściwa serializacja zapis użytkowników i haseł
+        //TODO dodanie szegułów klienta (obecnie jest imie nazwisko)
+        //TODO dodawanie admina (obecnie tylko user)
+        //TODO ujednolicenie sztaty graficznej
 
         //--------------------------------------------------------------------
         public static User currentuser;

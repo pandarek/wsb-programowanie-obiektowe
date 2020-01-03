@@ -11,7 +11,7 @@ namespace HotelDrCsharp
             Console.Title = "DrCsharp - System Rezerwacji Hotelowej"; //nazwa konsoli
             Console.BackgroundColor = ConsoleColor.Black; //kolor tła konsoli
             Console.ForegroundColor = ConsoleColor.Green; //kolor pierwszego planu konsoli
-     
+
             Console.Clear();
             Console.WriteLine("System rezerwacji HotelDrCsharp\n");
             Console.WriteLine("Login: " + Program.currentuser.Login);
@@ -28,7 +28,7 @@ namespace HotelDrCsharp
             Console.WriteLine("9 - Ustawienia");
             Console.WriteLine("0 - Zamknij system");
         }
-        
+
         public static int InputInt(string msg)
         {
 
@@ -44,12 +44,30 @@ namespace HotelDrCsharp
             return result;
         }
 
+        public static int InputIntRange(string msg, int from, int to)
+        {
+
+            bool udalosoe;
+            int result;
+
+            do
+            {
+                Console.Write(msg);
+                udalosoe = int.TryParse(Console.ReadLine(), out result);
+
+            } while ((!udalosoe) && (result >= from) && (result <= to));
+
+            return result;
+        }
+
+        
         public static void Wait()
         {
             Console.WriteLine("\nPress any key to continue...");
             Console.ReadKey();
-
         }
+
+
         public static string GetConsolePassword()
         {
             StringBuilder sb = new StringBuilder();
