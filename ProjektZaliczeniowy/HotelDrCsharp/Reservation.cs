@@ -28,46 +28,53 @@ namespace HotelDrCsharp
         public static DateTime AddStartDate()
         {
             DateTime startdate;
+            DateTime ToDay = DateTime.Today.ToLocalTime();
 
             Console.WriteLine("------------------------------------------");
             Console.WriteLine("Wprowadź datę przyjazdu format (RRRR-MM-DD)");
-            string line = Console.ReadLine();
-            
-            while (!DateTime.TryParseExact(line, "yyyy-MM-dd", null, System.Globalization.DateTimeStyles.None, out startdate))
-            {
-                Console.WriteLine("Błędna data, wprowadź ponownie");
-                line = Console.ReadLine();
 
-            }
+            string date;
+            bool dataok;
+
+            do
+            {
+                date = Console.ReadLine();
+                dataok = DateTime.TryParseExact(date, "yyyy-MM-dd", null, System.Globalization.DateTimeStyles.None, out startdate);
+
+                if (!dataok) { Console.WriteLine("Bład daty: wprowadź ponownie"); }
+                if (startdate < ToDay) { Console.WriteLine("Bład daty: data przeszła, wprowadź ponownie"); }
+
+            } while (!dataok || (startdate < ToDay));
 
             return startdate;
 
         }
 
-        public static DateTime AddEndDate()
+        public static DateTime AddEndDate(DateTime startdate)
         {
 
             DateTime enddate;
 
             Console.WriteLine("------------------------------------------");
             Console.WriteLine("Wprowadź datę wyjazdu format (RRRR-MM-DD)");
-            string line = Console.ReadLine();
 
-            while (!DateTime.TryParseExact(line, "yyyy-MM-dd", null, System.Globalization.DateTimeStyles.None, out enddate))
+            string date;
+            bool dataok;
+
+            do
             {
-                Console.WriteLine("Błędna data, wprowadź ponownie");
-                line = Console.ReadLine();
+                date = Console.ReadLine();
+                dataok = DateTime.TryParseExact(date, "yyyy-MM-dd", null, System.Globalization.DateTimeStyles.None, out enddate);
 
-            }
+                if (!dataok) { Console.WriteLine("Bład daty: wprowadź ponownie"); }
+                if (startdate >= enddate) { Console.WriteLine("Błąd daty: Data wyjazdu nie móże być wcześniej niż data przyjazdu, wprowadź ponownie"); }
+
+            } while (!dataok || startdate >= enddate);
 
             return enddate;
         }
-
+       
     }
-
-
-
-
 
     //    public class Bill 
     //{ 

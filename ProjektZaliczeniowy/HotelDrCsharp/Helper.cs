@@ -21,11 +21,13 @@ namespace HotelDrCsharp
             Console.WriteLine("1 - Dodaj rezerwacje");
             Console.WriteLine("2 - Usun rezerwacje");
             Console.WriteLine("3 - Sprawdz miejsce");
+            Console.WriteLine("---------------------------------");
             Console.WriteLine("4 - Wyswietl wszystkie pokoje");
             Console.WriteLine("5 - Wyswietl wolne miejsca");
             Console.WriteLine("6 - Wyswietl zarezerwowane pokoje");
             Console.WriteLine("---------------------------------");
             Console.WriteLine("9 - Ustawienia");
+            Console.WriteLine("---------------------------------");
             Console.WriteLine("0 - Zamknij system");
         }
 
@@ -42,6 +44,7 @@ namespace HotelDrCsharp
 
             }
             return result;
+
         }
 
         public static int InputIntRange(string msg, int from, int to)
@@ -55,12 +58,11 @@ namespace HotelDrCsharp
                 Console.Write(msg);
                 udalosoe = int.TryParse(Console.ReadLine(), out result);
 
-            } while ((!udalosoe) && (result >= from) && (result <= to));
+            } while ((!udalosoe) || (result < from) || (result > to));
 
             return result;
         }
 
-        
         public static void Wait()
         {
             Console.WriteLine("\nPress any key to continue...");

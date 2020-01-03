@@ -48,8 +48,10 @@ namespace HotelDrCsharp
                 string status = (item.Status == true) ? "rezerwcja" : "wolne";
                 if (item.Status)
                 {
+                    Console.WriteLine("-------------------------------");
                     Console.WriteLine($"Numer pokoju: {item.Roomnumber}, Ilość pokoi: {item.Roomsize}, Status: {status}");
                     Console.WriteLine($"Klient: {item.Customer}");
+                    Console.WriteLine($"Od: {item.StartDate.ToString("yyyy-MM-dd")} do: {item.EndDate.ToString("yyyy-MM-dd")}");
                 }
                 else
                 {

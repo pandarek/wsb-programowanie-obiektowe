@@ -13,12 +13,12 @@ namespace HotelDrCsharp
         //DONE sprawdzić i poprawić kod, szczególlnie pętle
         //DONE nadanie tylko adminowi uprawnien do nadawania haseł
         //DONE dodawanie daty rezerwacji
+        //DONE sprawdzanie daty rezerwacji czy start nie jest cześniej niż koniec
 
         //TODO wyświetalnie reaerwacji (tabelka?)
-        //TODO sprawdzanie daty rezerwacji czy start nie jest cześniej niż koniec
         //TODO wyliczenia kosztów rezerwacji
         //TODO właściwa serializacja zapis użytkowników i haseł
-        //TODO dodanie szegułów klienta (obecnie jest imie nazwisko)
+        //TODO dodanie szegułów klienta (obecnie jest imie i nazwisko)
         //TODO dodawanie admina (obecnie tylko user)
         //TODO ujednolicenie sztaty graficznej
 
@@ -116,16 +116,17 @@ namespace HotelDrCsharp
                 {
                     case 1:
                         Hotel.hotellist.FindAll(s => s.Status == false).ForEach(Console.WriteLine);
-                        roomnumber = (Helper.InputInt("\nPodaj numer pokoju: ") - 1);
+                       //roomnumber = (Helper.InputInt("\nPodaj numer pokoju: ") - 1);
+                        roomnumber = Helper.InputIntRange("\nPodaj numer pokoju (1-30): ", 1 , 30) -1;
                         Hotel.hotellist[roomnumber].book();
                         break;
                     case 2:
                         Hotel.hotellist.FindAll(s => s.Status != false).ForEach(Console.WriteLine);
-                        roomnumber = (Helper.InputInt("\nPodaj numer pokoju: ") - 1);
+                        roomnumber = (Helper.InputInt("\nPodaj numer pokoju (1-30): ") - 1);
                         Hotel.hotellist[roomnumber].cancelreservation();
                         break;
                     case 3:
-                        roomnumber = (Helper.InputInt("\nPodaj numer pokoju: ") - 1);
+                        roomnumber = (Helper.InputInt("\nPodaj numer pokoju (1-30): ") - 1);
                         Console.WriteLine(Hotel.hotellist[roomnumber].ToString());
                         Helper.Wait();
                         break;

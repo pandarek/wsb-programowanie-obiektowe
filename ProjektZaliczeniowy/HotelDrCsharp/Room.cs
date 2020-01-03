@@ -20,7 +20,7 @@ namespace HotelDrCsharp
             this._customer = Customer;
             this._startdate = StartDate;
             this._enddate = EndDate;
-    }
+        }
 
         public bool Status { get; set; }
         public int Roomsize { get; set; }
@@ -42,8 +42,11 @@ namespace HotelDrCsharp
             else
             {
                 Customer = Reservation.AddCustomer();
+
                 StartDate = Reservation.AddStartDate();
-                EndDate = Reservation.AddEndDate();
+                
+                EndDate = Reservation.AddEndDate(StartDate);
+
                 Status = true;
                 
                 Console.WriteLine($"\nPokój {Roomnumber} Rezerwacja dokonana");
@@ -74,7 +77,7 @@ namespace HotelDrCsharp
             string status = (Status) ? "rezerwcja" : "wolne";
             if (Status)
             {
-                return $"Pokój: {Roomnumber}, Status: {status} od: {StartDate} do {EndDate}, \nKlinet: {Customer}";
+                return $"Pokój: {Roomnumber}, Status: {status} od: {StartDate.ToString("yyyy-MM-dd")} do {EndDate.ToString("yyyy-MM-dd")}, \nKlinet: {Customer}";
             }
 
             return $"Pokój: {Roomnumber}, Status: {status}";

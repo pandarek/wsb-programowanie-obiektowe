@@ -32,7 +32,7 @@ namespace HotelDrCsharp
 
         public override string ToString()
         {
-            return $"Imię: {_imie}, Nazwosko {_nazwisko}";
+            return $"Imię: {_imie}, Nazwisko: {_nazwisko}";
         }
     }
 }
