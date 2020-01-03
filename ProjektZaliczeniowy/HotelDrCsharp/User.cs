@@ -1,6 +1,7 @@
 ﻿using System;
 namespace HotelDrCsharp
 {
+    [Serializable]
     public class User
     {
         private string _imie;

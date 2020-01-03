@@ -14,11 +14,14 @@ namespace HotelDrCsharp
         //DONE nadanie tylko adminowi uprawnien do nadawania haseł
         //DONE dodawanie daty rezerwacji
         //DONE sprawdzanie daty rezerwacji czy start nie jest cześniej niż koniec
+        //DONE właściwa serializacja zapis użytkowników i haseł oraz danych hotelu
 
-        //TODO wyświetalnie reaerwacji (tabelka?)
+        //TODO zniana hasła domyślnego dla admina i usera przy pierwszym uruchomieniu
+
+        //TODO wyświetalnie rezerwacji (tabelka?)
         //TODO wyliczenia kosztów rezerwacji
-        //TODO właściwa serializacja zapis użytkowników i haseł
-        //TODO dodanie szegułów klienta (obecnie jest imie i nazwisko)
+
+        //TODO dodanie szegółów klienta (obecnie jest imie i nazwisko)
         //TODO dodawanie admina (obecnie tylko user)
         //TODO ujednolicenie sztaty graficznej
 
@@ -116,8 +119,8 @@ namespace HotelDrCsharp
                 {
                     case 1:
                         Hotel.hotellist.FindAll(s => s.Status == false).ForEach(Console.WriteLine);
-                       //roomnumber = (Helper.InputInt("\nPodaj numer pokoju: ") - 1);
-                        roomnumber = Helper.InputIntRange("\nPodaj numer pokoju (1-30): ", 1 , 30) -1;
+                        //roomnumber = (Helper.InputInt("\nPodaj numer pokoju: ") - 1);
+                        roomnumber = Helper.InputIntRange("\nPodaj numer pokoju (1-30): ", 1, 30) - 1;
                         Hotel.hotellist[roomnumber].book();
                         break;
                     case 2:

@@ -23,6 +23,7 @@ namespace HotelDrCsharp
         public string Telefon { get => _telefon; set => _telefon = value; }
         public string Email { get => _email; set => _email = value; }
 
+        public Customer() { }
         
         public Customer(string Imie, string Nazwisko)
         {

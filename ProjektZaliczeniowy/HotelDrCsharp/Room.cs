@@ -22,9 +22,9 @@ namespace HotelDrCsharp
             this._enddate = EndDate;
         }
 
-        public bool Status { get; set; }
-        public int Roomsize { get; set; }
         public int Roomnumber { get; set; }
+        public int Roomsize { get; set; }
+        public bool Status { get; set; }      
         public Customer Customer { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
