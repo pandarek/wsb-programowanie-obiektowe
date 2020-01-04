@@ -8,8 +8,7 @@ namespace HotelDrCsharp
 
         public static void Run()
         {
-            SerializeXML HotelSerializer = new SerializeXML();
-            SerializeBIN serializeBIN = new SerializeBIN();
+
             //---------------------------------------------------------------------
             bool end = false;
 
@@ -22,6 +21,7 @@ namespace HotelDrCsharp
                 {
                     case 1:
                         AddUser();
+                        SerializeBIN.SaveUsers();
                         break;
 
                     case 2:
@@ -30,26 +30,27 @@ namespace HotelDrCsharp
                         break;
 
                     case 6:
-                        serializeBIN.savebin(Program.users);
+                        SerializeBIN.SaveUsers();
                         Helper.Wait();
                         break;
 
                     case 7:
-                        serializeBIN.loadbin();
+                        SerializeBIN.LoadUsers();
                         Helper.Wait();
                         break;
 
                     case 8:
-                        HotelSerializer.savexml(Hotel.hotellist);
+                        SerializeXML.SaveHotelData();
                         Helper.Wait();
                         break;
 
                     case 9:
-                        HotelSerializer.deserialize();
+                        SerializeXML.LoadHotelData();
                         Helper.Wait();
                         break;
 
                     case 0:
+                        
                         end = true;
                         break;
 
@@ -84,19 +85,14 @@ namespace HotelDrCsharp
         {
             return Program.users.Any(item => item.Login == userlogin);
         }
-        public static bool PasswordTheSame(string password1, string password2)
-        {
-            if (password1 == password2) return true;
-            return false;
-
-        }
+        
         private static void AddUser()
         {
             if (Program.currentuser.IsAdminn())
             {
                 Console.WriteLine("Utwórz nowego użytkownika:");
 
-                string login, password, password2;
+                string login, password;
 
                 do
                 {
@@ -111,20 +107,7 @@ namespace HotelDrCsharp
 
                 } while (UserExist(login));
 
-                do
-                {
-                    Console.WriteLine("Podaj haslo:");
-                    password = Helper.GetConsolePassword();
-
-                    Console.WriteLine("Powtórz haslo:");
-                    password2 = Helper.GetConsolePassword();
-
-                    if (!PasswordTheSame(password, password2))
-                    {
-                        Console.WriteLine("Hasła się różnią");
-                    }
-
-                } while (!PasswordTheSame(password, password2));
+                password = Helper.EnterPassword();
 
                 Employee user = new Employee(login, password, "", "", "", "");
 

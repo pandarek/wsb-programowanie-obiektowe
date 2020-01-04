@@ -8,73 +8,39 @@ using System.IO;
 namespace HotelDrCsharp
 {
 
-    public static class Reservation
+    public class Reservation
     {
+        private int _id;
+        private int _roomnumber;
+        private Customer _customer;
+        private DateTime _startdate;
+        private DateTime _enddate;
 
-        public static Customer AddCustomer()
+        public Reservation()
         {
-            Console.WriteLine("------------------------------------------");
-            Console.Write("Podaj imię:\t\t\t");
-            var imie = Console.ReadLine();
-            Console.Write("Podaj Nazwisko:\t\t\t");
-            var nazwisko = Console.ReadLine();
-
-
-            Customer customer = new Customer(imie, nazwisko);
-
-            return customer;
         }
 
-        public static DateTime AddStartDate()
+        public Reservation(int Roomnumber, Customer Customer, DateTime StartDate, DateTime EndDate)
         {
-            DateTime startdate;
-            DateTime ToDay = DateTime.Today.ToLocalTime();
-
-            Console.WriteLine("------------------------------------------");
-            Console.WriteLine("Wprowadź datę przyjazdu format (RRRR-MM-DD)");
-
-            string date;
-            bool dataok;
-
-            do
-            {
-                date = Console.ReadLine();
-                dataok = DateTime.TryParseExact(date, "yyyy-MM-dd", null, System.Globalization.DateTimeStyles.None, out startdate);
-
-                if (!dataok) { Console.WriteLine("Bład daty: wprowadź ponownie"); }
-                if (startdate < ToDay) { Console.WriteLine("Bład daty: data przeszła, wprowadź ponownie"); }
-
-            } while (!dataok || (startdate < ToDay));
-
-            return startdate;
-
+            this._roomnumber = Roomnumber;
+            this._customer = Customer;
+            this._startdate = StartDate;
+            this._enddate = EndDate;
+            this._id = GetHashCode();
         }
 
-        public static DateTime AddEndDate(DateTime startdate)
+        public int Roomnumber { get; set; }
+        public int Id { get => _id; set => _id = value; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public Customer Customer { get; set; }
+
+        public override string ToString()
         {
-
-            DateTime enddate;
-
-            Console.WriteLine("------------------------------------------");
-            Console.WriteLine("Wprowadź datę wyjazdu format (RRRR-MM-DD)");
-
-            string date;
-            bool dataok;
-
-            do
-            {
-                date = Console.ReadLine();
-                dataok = DateTime.TryParseExact(date, "yyyy-MM-dd", null, System.Globalization.DateTimeStyles.None, out enddate);
-
-                if (!dataok) { Console.WriteLine("Bład daty: wprowadź ponownie"); }
-                if (startdate >= enddate) { Console.WriteLine("Błąd daty: Data wyjazdu nie móże być wcześniej niż data przyjazdu, wprowadź ponownie"); }
-
-            } while (!dataok || startdate >= enddate);
-
-            return enddate;
+            return $"Nr: {_id}, Pokoj: {_roomnumber}, {_customer}, {_startdate}, {_enddate}";
         }
-       
     }
+
 
     //    public class Bill 
     //{ 

@@ -5,25 +5,27 @@ using System;
 
 namespace HotelDrCsharp
 {
-    public class SerializeXML
+    public static class SerializeXML
     {
-        XmlSerializer serializer = new XmlSerializer(typeof(List<Room>));
-
-        public void savexml(List<Room> hotellist)
+        
+        public static void SaveHotelData()
         {
+            XmlSerializer serializer = new XmlSerializer(typeof(List<Room>));
 
             using (TextWriter writer = new StreamWriter(@"./hoteldata.xml"))
             {
-                serializer.Serialize(writer, hotellist);
+                serializer.Serialize(writer, Hotel.hotellist);
                 Console.WriteLine("Dane hotelu zapisane");
             }
 
         }
-        public void deserialize()
+        public static void LoadHotelData()
         {
 
             try
             {
+                XmlSerializer serializer = new XmlSerializer(typeof(List<Room>));
+
                 using (TextReader reader = new StreamReader(@"./hoteldata.xml"))
                 {
                     var obj = serializer.Deserialize(reader);
@@ -38,6 +40,8 @@ namespace HotelDrCsharp
                 Console.WriteLine(e.Message);
             }
         }
+
+        
 
     }
 }

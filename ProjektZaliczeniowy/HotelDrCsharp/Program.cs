@@ -10,6 +10,7 @@ namespace HotelDrCsharp
 {
     class Program
     {
+
         //DONE sprawdzić i poprawić kod, szczególlnie pętle
         //DONE nadanie tylko adminowi uprawnien do nadawania haseł
         //DONE dodawanie daty rezerwacji
@@ -25,6 +26,12 @@ namespace HotelDrCsharp
         //TODO dodawanie admina (obecnie tylko user)
         //TODO ujednolicenie sztaty graficznej
 
+        /// <summary>
+        /// falga zamina hasła na usera
+        /// reaerwacja jako klasa z pokojem
+        /// </summary>
+
+
         //--------------------------------------------------------------------
         public static User currentuser;
         public static List<User> users;
@@ -34,25 +41,40 @@ namespace HotelDrCsharp
         //---------------------------------------------------------------------
         {
 
-            ProgramStart();
+            // logowanie wyłączone do testów
+             DefaultUser();
+             Login();
+            Start();
 
         }
 
-        public static void ProgramStart()
+        public static void DefaultUser()
         {
-            bool startup = true;
-
-            //default admin
-            User admin = new Admin("admin", "admin2020", "", "", "", "");
-
-            //default user
-            User user = new Employee("user", "user2020", "", "", "", "");
-
             users = new List<User>();
 
-            users.Add(admin);
-            users.Add(user);
+            if (!File.Exists(@"./users.bin"))
+            {
 
+                //default admin
+                User admin = new Admin("admin", "admin2020", "", "", "", "");
+
+                //default user
+                User user = new Employee("user", "user2020", "", "", "", "");
+
+                
+
+                users.Add(admin);
+                users.Add(user);
+            } else
+            {
+                SerializeBIN.LoadUsers();
+            }
+            
+        }
+
+        public static void Login()
+        {
+            bool startup = true;
             do
             {
 
@@ -69,16 +91,26 @@ namespace HotelDrCsharp
                 Console.WriteLine("Podaj haslo:");
                 string password = Helper.GetConsolePassword();
 
-
                 bool logincorrect = users.Any(item => item.Login == username && item.Password == password);
-
 
                 if (logincorrect)
                 {
                     currentuser = users.Find(item => item.Login == username);
-                    startup = false;
-                    Run(); ///działa wychodzi z pętli i przechodzi do właściwego programu :)
+                    
 
+                    if(currentuser.ChangePassword)
+                    {
+                        Console.WriteLine("Wymagana zamina hasła");
+                        currentuser.Password = Helper.EnterPassword();
+                        currentuser.ChangePassword = false;
+
+                        SerializeBIN.SaveUsers();
+                        Helper.Wait();
+
+                    }
+
+                    startup = false;
+                    Start(); ///działa wychodzi z pętli i przechodzi do właściwego programu :)
                 }
                 else
                 {
@@ -87,15 +119,12 @@ namespace HotelDrCsharp
                 }
                 Console.Clear();
 
-
-
             } while (startup == true);
-
         }
 
 
 
-        public static void Run()
+        public static void Start()
         {
 
             //---------------------------------------------------------------------
@@ -103,13 +132,7 @@ namespace HotelDrCsharp
             int roomnumber;
 
             Hotel hotel = new Hotel();
-
-            // Hotel.hotellist[0].book();
-            //hotel.ToString();
-            //Hotel.hotellist[4].book();
-            //Hotel.hotellist[3].Roomsize = 2;
-            //hotel.ToString();
-
+       
             do
             {
                 Helper.MainMenu();
@@ -134,7 +157,7 @@ namespace HotelDrCsharp
                         Helper.Wait();
                         break;
                     case 4:
-                        hotel.ToString();
+                        Hotel.ToString();
                         Helper.Wait();
                         break;
                     case 5:
@@ -143,6 +166,23 @@ namespace HotelDrCsharp
                         break;
                     case 6:
                         Hotel.hotellist.FindAll(s => s.Status != false).ForEach(Console.WriteLine);
+                        Helper.Wait();
+                        break;
+                    case 11:
+                        hotel.RemoveReservation();
+                        Helper.Wait();
+                        hotel.ReservationsList.ForEach(Console.WriteLine);
+
+                        break;
+                         
+
+                    case 7:
+                        hotel.AddReservation();
+                        hotel.ReservationsList.ForEach(Console.WriteLine);
+                        Helper.Wait();
+                        break;
+                    case 8:
+                        hotel.ReservationsList.ForEach(Console.WriteLine);
                         Helper.Wait();
                         break;
                     case 9:
@@ -158,6 +198,9 @@ namespace HotelDrCsharp
 
                         break;
                     case 0:
+                        SerializeBIN.SaveUsers();
+                        SerializeXML.SaveHotelData();
+                        
                         end = true;
                         break;
                     default:

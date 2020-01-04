@@ -7,7 +7,7 @@ namespace HotelDrCsharp
     {
         private bool _isuser;
 
-        public Employee(string Login, string Password, string Imie, string Nazwisko, string Telefon, string Email, string Stanowisko = "recepcja") : base(Login, Password, Imie, Nazwisko, Telefon, Email, Stanowisko)
+        public Employee(string Login, string Password, string Imie, string Nazwisko, string Telefon, string Email, string Stanowisko = "recepcja", bool ChangePassword = true) : base(Login, Password, Imie, Nazwisko, Telefon, Email, Stanowisko, ChangePassword)
         {
             this._isuser = true;
         }

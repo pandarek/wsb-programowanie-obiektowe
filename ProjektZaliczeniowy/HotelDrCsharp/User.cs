@@ -11,6 +11,7 @@ namespace HotelDrCsharp
         private string _email;
         private string _login;
         private string _password;
+        private bool _changepassword;
 
         public string Imie { get => _imie; set => _imie = value; }
         public string Nazwisko { get => _nazwisko; set => _nazwisko = value; }
@@ -21,7 +22,9 @@ namespace HotelDrCsharp
         public string Login { get => _login; set => _login = value; }
         public string Password { get => _password; set => _password = value; }
 
-        public User(string Login, string Password, string Imie, string Nazwisko, string Telefon, string Email, string Stanowisko = "recepcja")
+        public bool ChangePassword { get => _changepassword; set => _changepassword = value; }
+
+        public User(string Login, string Password, string Imie, string Nazwisko, string Telefon, string Email, string Stanowisko = "recepcja", bool ChangePassword = true)
         {
             this._login = Login;
             this._password = Password;
@@ -30,6 +33,7 @@ namespace HotelDrCsharp
             this._stanowisko = Stanowisko;
             this._email = Email;
             this._telefon = Telefon;
+            this._changepassword = true;
         }
         public virtual bool IsAdminn()
         {
@@ -41,7 +45,7 @@ namespace HotelDrCsharp
         }
         public override string ToString()
         {
-            return $"Login: {_login}, {_stanowisko}";
+            return $"Login: {_login}, Pass: {_password}, {_stanowisko}";
         }
     }
 }

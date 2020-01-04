@@ -6,18 +6,19 @@ using System.Collections.Generic;
 
 namespace HotelDrCsharp
 {
-    public class SerializeBIN
+    public static class SerializeBIN
     {
-        IFormatter formatter = new BinaryFormatter();
-
-        public void savebin(List<User> users)
+        
+        public static void SaveUsers()
         {
 
             try
             {
+                IFormatter formatter = new BinaryFormatter();
+
                 using (Stream stream = new FileStream(@"./users.bin", FileMode.Create, FileAccess.Write))
                 {
-                    formatter.Serialize(stream, users);
+                    formatter.Serialize(stream, Program.users);
                 }
                 Console.WriteLine("Dane użytkowników zapisane");
             }
@@ -27,11 +28,14 @@ namespace HotelDrCsharp
             }
 
         }
-        public void loadbin()
+
+        public static void LoadUsers()
         {
 
             try
             {
+                IFormatter formatter = new BinaryFormatter();
+
                 using (Stream stream = new FileStream(@"./users.bin", FileMode.Open, FileAccess.Read))
                 {
                     var obj = formatter.Deserialize(stream);

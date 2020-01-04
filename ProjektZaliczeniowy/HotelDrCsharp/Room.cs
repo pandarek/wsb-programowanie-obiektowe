@@ -41,11 +41,11 @@ namespace HotelDrCsharp
             }
             else
             {
-                Customer = Reservation.AddCustomer();
+                Customer = Helper.AddCustomer();
 
-                StartDate = Reservation.AddStartDate();
+                StartDate = Helper.AddStartDate();
                 
-                EndDate = Reservation.AddEndDate(StartDate);
+                EndDate = Helper.AddEndDate(StartDate);
 
                 Status = true;
                 
@@ -71,6 +71,7 @@ namespace HotelDrCsharp
                 Helper.Wait();
             }
         }
+
 
         public override string ToString()
         {

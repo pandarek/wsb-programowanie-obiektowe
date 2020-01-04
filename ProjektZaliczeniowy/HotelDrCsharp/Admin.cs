@@ -6,7 +6,7 @@ namespace HotelDrCsharp
     {
         private bool _isadmin;
 
-        public Admin(string Login, string Password, string Imie, string Nazwisko, string Telefon, string Email, string Stanowisko = "admin") : base(Login, Password, Imie, Nazwisko, Telefon, Email, Stanowisko)
+        public Admin(string Login, string Password, string Imie, string Nazwisko, string Telefon, string Email, string Stanowisko = "admin", bool ChangePassword = true) : base(Login, Password, Imie, Nazwisko, Telefon, Email, Stanowisko, ChangePassword)
         {
             this._isadmin = true;
         }

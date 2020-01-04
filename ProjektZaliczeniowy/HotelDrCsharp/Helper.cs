@@ -16,6 +16,7 @@ namespace HotelDrCsharp
             Console.WriteLine("System rezerwacji HotelDrCsharp\n");
             Console.WriteLine("Login: " + Program.currentuser.Login);
             Console.WriteLine("Czy admin: " + Program.currentuser.IsAdminn());
+            Console.WriteLine("Zmina hasła: " + Program.currentuser.ChangePassword);
             Console.WriteLine("Wybierz opcje: ");
 
             Console.WriteLine("1 - Dodaj rezerwacje");
@@ -98,6 +99,100 @@ namespace HotelDrCsharp
             }
 
             return sb.ToString();
+        }
+
+        public static bool PasswordTheSame(string password1, string password2)
+        {
+            if (password1 == password2) return true;
+            return false;
+
+        }
+
+        public static string EnterPassword()
+        {
+            string password, password2;
+            do
+                {
+                Console.WriteLine("Podaj haslo:");
+                password = Helper.GetConsolePassword();
+
+                Console.WriteLine("Powtórz haslo:");
+                password2 = Helper.GetConsolePassword();
+
+                if (!PasswordTheSame(password, password2))
+                {
+                    Console.WriteLine("Hasła się różnią");
+                }
+
+            } while (!PasswordTheSame(password, password2));
+            
+            return password;
+        }
+
+
+        //rezerwacje
+
+        public static Customer AddCustomer()
+        {
+            Console.WriteLine("------------------------------------------");
+            Console.Write("Podaj imię:\t\t\t");
+            var imie = Console.ReadLine();
+            Console.Write("Podaj Nazwisko:\t\t\t");
+            var nazwisko = Console.ReadLine();
+
+
+            Customer customer = new Customer(imie, nazwisko);
+
+            return customer;
+        }
+
+        public static DateTime AddStartDate()
+        {
+            DateTime startdate;
+            DateTime ToDay = DateTime.Today.ToLocalTime();
+
+            Console.WriteLine("------------------------------------------");
+            Console.WriteLine("Wprowadź datę przyjazdu format (RRRR-MM-DD)");
+
+            string date;
+            bool dataok;
+
+            do
+            {
+                date = Console.ReadLine();
+                dataok = DateTime.TryParseExact(date, "yyyy-MM-dd", null, System.Globalization.DateTimeStyles.None, out startdate);
+
+                if (!dataok) { Console.WriteLine("Bład daty: wprowadź ponownie"); }
+                if (startdate < ToDay) { Console.WriteLine("Bład daty: data przeszła, wprowadź ponownie"); }
+
+            } while (!dataok || (startdate < ToDay));
+
+            return startdate;
+
+        }
+
+        public static DateTime AddEndDate(DateTime startdate)
+        {
+
+            DateTime enddate;
+
+            Console.WriteLine("------------------------------------------");
+            Console.WriteLine("Wprowadź datę wyjazdu format (RRRR-MM-DD)");
+
+            string date;
+            bool dataok;
+
+            do
+            {
+                date = Console.ReadLine();
+                dataok = DateTime.TryParseExact(date, "yyyy-MM-dd", null, System.Globalization.DateTimeStyles.None, out enddate);
+
+                if (!dataok) { Console.WriteLine("Bład daty: wprowadź ponownie"); }
+                if (startdate >= enddate) { Console.WriteLine("Błąd daty: Data wyjazdu nie móże być wcześniej niż data przyjazdu, wprowadź ponownie"); }
+
+            } while (!dataok || startdate >= enddate);
+
+            return enddate;
         }
 
     }

@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace HotelDrCsharp
 {
     public class Hotel
     {
-        static public int rooms = 30;
-        //public static List<Room> hotel = new List<Room>();
+        public List<Reservation> ReservationsList = new List<Reservation>();
         public static List<Room> hotellist = new List<Room>
         {
             new Room{Roomnumber = 1, Roomsize = 1},
@@ -41,7 +41,52 @@ namespace HotelDrCsharp
             new Room{Roomnumber = 30, Roomsize = 3}
         };
 
-        public void ToString()
+
+        public void AddReservation()
+        {
+            ReservationsList.ForEach(Console.WriteLine);
+            int roomnumber = Helper.InputIntRange("Podaj numer pokoju: ", 1, 30);
+
+            Customer customer = Helper.AddCustomer();
+
+            DateTime StartDate = Helper.AddStartDate();
+
+            DateTime EndDate = Helper.AddEndDate(StartDate);
+
+            if (true)
+            {
+                Reservation reservation = new Reservation(roomnumber, customer, StartDate, EndDate);
+                ReservationsList.Add(reservation);
+                hotellist[roomnumber - 1].Status = true;
+            }
+            else
+            {
+                Console.WriteLine("daty się nakładają");
+            }
+
+        }
+
+        public void RemoveReservation()
+        {
+            ReservationsList.ForEach(Console.WriteLine);
+            int id = Helper.InputInt("Podaj numer rezerwacji: ");
+
+            var itemToRemove = ReservationsList.Single(item => item.Id == id);
+            ReservationsList.Remove(itemToRemove);
+
+            ReservationsList.ForEach(Console.WriteLine);
+            Helper.Wait();
+        }
+
+        //public bool Date(int room, DateTime start, DateTime end)
+        //{
+        //    //return ReservationsList.Any(s => s.Roomnumber == room);
+        //    return ReservationsList.Any(s => s.Roomnumber == room && ((start > s.EndDate && end > s.EndDate) || (start < s.StartDate && end < s.StartDate))  );
+
+        //}
+
+
+        public static void ToString()
         {
             foreach (var item in hotellist)
             {
