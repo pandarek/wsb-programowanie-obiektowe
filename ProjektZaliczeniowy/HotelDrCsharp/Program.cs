@@ -8,16 +8,21 @@ using System.IO;
 
 namespace HotelDrCsharp
 {
+
+    enum MainMenu
+    {
+
+    }
     class Program
     {
+        //INFO zmieniona logika klass na klasę głowną przechowująca rezerwację (Reservation)
 
         //DONE sprawdzić i poprawić kod, szczególlnie pętle
         //DONE nadanie tylko adminowi uprawnien do nadawania haseł
         //DONE dodawanie daty rezerwacji
         //DONE sprawdzanie daty rezerwacji czy start nie jest cześniej niż koniec
         //DONE właściwa serializacja zapis użytkowników i haseł oraz danych hotelu
-
-        //TODO zniana hasła domyślnego dla admina i usera przy pierwszym uruchomieniu
+        //DONE zniana hasła domyślnego dla admina i usera przy pierwszym uruchomieniu
 
         //TODO wyświetalnie rezerwacji (tabelka?)
         //TODO wyliczenia kosztów rezerwacji
@@ -25,11 +30,6 @@ namespace HotelDrCsharp
         //TODO dodanie szegółów klienta (obecnie jest imie i nazwisko)
         //TODO dodawanie admina (obecnie tylko user)
         //TODO ujednolicenie sztaty graficznej
-
-        /// <summary>
-        /// falga zamina hasła na usera
-        /// reaerwacja jako klasa z pokojem
-        /// </summary>
 
 
         //--------------------------------------------------------------------
@@ -44,7 +44,7 @@ namespace HotelDrCsharp
             // logowanie wyłączone do testów
              DefaultUser();
              Login();
-            Start();
+             Start();
 
         }
 
@@ -70,6 +70,11 @@ namespace HotelDrCsharp
                 SerializeBIN.LoadUsers();
             }
             
+        }
+
+        enum MainMenu
+        {
+            Exit, AddReservation, CancelReservation, ShowRezervations, ShowRooms, ShowFreeRooms, ShowReservedRooms, SetUp = 9, 
         }
 
         public static void Login()
@@ -129,7 +134,6 @@ namespace HotelDrCsharp
 
             //---------------------------------------------------------------------
             bool end = false;
-            int roomnumber;
 
             Hotel hotel = new Hotel();
        
@@ -140,52 +144,47 @@ namespace HotelDrCsharp
 
                 switch (Helper.InputInt("\nWybierz opcję: "))
                 {
-                    case 1:
-                        Hotel.hotellist.FindAll(s => s.Status == false).ForEach(Console.WriteLine);
-                        //roomnumber = (Helper.InputInt("\nPodaj numer pokoju: ") - 1);
-                        roomnumber = Helper.InputIntRange("\nPodaj numer pokoju (1-30): ", 1, 30) - 1;
-                        Hotel.hotellist[roomnumber].book();
-                        break;
-                    case 2:
-                        Hotel.hotellist.FindAll(s => s.Status != false).ForEach(Console.WriteLine);
-                        roomnumber = (Helper.InputInt("\nPodaj numer pokoju (1-30): ") - 1);
-                        Hotel.hotellist[roomnumber].cancelreservation();
-                        break;
-                    case 3:
-                        roomnumber = (Helper.InputInt("\nPodaj numer pokoju (1-30): ") - 1);
-                        Console.WriteLine(Hotel.hotellist[roomnumber].ToString());
-                        Helper.Wait();
-                        break;
-                    case 4:
-                        Hotel.ToString();
-                        Helper.Wait();
-                        break;
-                    case 5:
-                        Hotel.hotellist.FindAll(s => s.Status == false).ForEach(Console.WriteLine);
-                        Helper.Wait();
-                        break;
-                    case 6:
-                        Hotel.hotellist.FindAll(s => s.Status != false).ForEach(Console.WriteLine);
-                        Helper.Wait();
-                        break;
-                    case 11:
-                        hotel.RemoveReservation();
-                        Helper.Wait();
-                        hotel.ReservationsList.ForEach(Console.WriteLine);
+                    case (int)MainMenu.AddReservation:
 
-                        break;
-                         
-
-                    case 7:
                         hotel.AddReservation();
                         hotel.ReservationsList.ForEach(Console.WriteLine);
                         Helper.Wait();
+
                         break;
-                    case 8:
+
+                    case (int)MainMenu.CancelReservation:
+
+                        hotel.RemoveReservation();
+                        Helper.Wait();
+                        hotel.ReservationsList.ForEach(Console.WriteLine);
+                        break;
+
+                    case (int)MainMenu.ShowRezervations:
+
                         hotel.ReservationsList.ForEach(Console.WriteLine);
                         Helper.Wait();
                         break;
-                    case 9:
+
+                    case (int)MainMenu.ShowRooms:
+
+                        Hotel.hotellist.ForEach(Console.WriteLine);
+                        Helper.Wait();
+                        break;
+
+                    case (int)MainMenu.ShowFreeRooms:
+
+                        Hotel.hotellist.FindAll(s => s.Status == false).ForEach(Console.WriteLine);
+                        Helper.Wait();
+                        break;
+
+                    case (int)MainMenu.ShowReservedRooms:
+
+                        Hotel.hotellist.FindAll(s => s.Status != false).ForEach(Console.WriteLine);
+                        Helper.Wait();
+                        break;
+                   
+                    case (int)MainMenu.SetUp:
+
                         if (currentuser.IsAdminn())
                         {
                             Setup.Run();
@@ -197,13 +196,12 @@ namespace HotelDrCsharp
                         }
 
                         break;
-                    case 0:
+
+                    case (int)MainMenu.Exit:
+
                         SerializeBIN.SaveUsers();
                         SerializeXML.SaveHotelData();
-                        
                         end = true;
-                        break;
-                    default:
                         break;
 
                 }

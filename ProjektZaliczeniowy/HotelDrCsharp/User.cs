@@ -45,7 +45,7 @@ namespace HotelDrCsharp
         }
         public override string ToString()
         {
-            return $"Login: {_login}, Pass: {_password}, {_stanowisko}";
+            return $"Login: {_login}, {_stanowisko}";
         }
     }
 }

@@ -28,8 +28,13 @@ namespace HotelDrCsharp
             this._enddate = EndDate;
             this._id = GetHashCode();
         }
+        public Reservation(int Roomnumber)
+        {
+            this._roomnumber = Roomnumber;
+            this._id = GetHashCode();
+        }
 
-        public int Roomnumber { get; set; }
+        public int Roomnumber { get => _roomnumber; set => _roomnumber = value; }
         public int Id { get => _id; set => _id = value; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }

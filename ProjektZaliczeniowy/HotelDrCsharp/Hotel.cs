@@ -9,36 +9,21 @@ namespace HotelDrCsharp
         public List<Reservation> ReservationsList = new List<Reservation>();
         public static List<Room> hotellist = new List<Room>
         {
-            new Room{Roomnumber = 1, Roomsize = 1},
-            new Room{Roomnumber = 2, Roomsize = 1},
-            new Room{Roomnumber = 3, Roomsize = 1},
-            new Room{Roomnumber = 4, Roomsize = 1},
-            new Room{Roomnumber = 5, Roomsize = 1},
-            new Room{Roomnumber = 6, Roomsize = 1},
-            new Room{Roomnumber = 7, Roomsize = 1},
-            new Room{Roomnumber = 8, Roomsize = 1},
-            new Room{Roomnumber = 9, Roomsize = 1},
-            new Room{Roomnumber = 10, Roomsize = 1},
-            new Room{Roomnumber = 11, Roomsize = 2},
-            new Room{Roomnumber = 12, Roomsize = 2},
-            new Room{Roomnumber = 13, Roomsize = 2},
-            new Room{Roomnumber = 14, Roomsize = 2},
-            new Room{Roomnumber = 15, Roomsize = 2},
-            new Room{Roomnumber = 16, Roomsize = 2},
-            new Room{Roomnumber = 17, Roomsize = 2},
-            new Room{Roomnumber = 18, Roomsize = 2},
-            new Room{Roomnumber = 19, Roomsize = 2},
-            new Room{Roomnumber = 20, Roomsize = 2},
-            new Room{Roomnumber = 21, Roomsize = 3},
-            new Room{Roomnumber = 22, Roomsize = 3},
-            new Room{Roomnumber = 23, Roomsize = 3},
-            new Room{Roomnumber = 24, Roomsize = 3},
-            new Room{Roomnumber = 25, Roomsize = 3},
-            new Room{Roomnumber = 26, Roomsize = 3},
-            new Room{Roomnumber = 27, Roomsize = 3},
-            new Room{Roomnumber = 28, Roomsize = 3},
-            new Room{Roomnumber = 29, Roomsize = 3},
-            new Room{Roomnumber = 30, Roomsize = 3}
+            new Room{Roomnumber = 1, Roomsize = 1},  new Room{Roomnumber = 2, Roomsize = 1},
+            new Room{Roomnumber = 3, Roomsize = 1},  new Room{Roomnumber = 4, Roomsize = 1},
+            new Room{Roomnumber = 5, Roomsize = 1},  new Room{Roomnumber = 6, Roomsize = 1},
+            new Room{Roomnumber = 7, Roomsize = 1},  new Room{Roomnumber = 8, Roomsize = 1},
+            new Room{Roomnumber = 9, Roomsize = 1},  new Room{Roomnumber = 10, Roomsize = 1},
+            new Room{Roomnumber = 11, Roomsize = 2}, new Room{Roomnumber = 12, Roomsize = 2},
+            new Room{Roomnumber = 13, Roomsize = 2}, new Room{Roomnumber = 14, Roomsize = 2},
+            new Room{Roomnumber = 15, Roomsize = 2}, new Room{Roomnumber = 16, Roomsize = 2},
+            new Room{Roomnumber = 17, Roomsize = 2}, new Room{Roomnumber = 18, Roomsize = 2},
+            new Room{Roomnumber = 19, Roomsize = 2}, new Room{Roomnumber = 20, Roomsize = 2},
+            new Room{Roomnumber = 21, Roomsize = 3}, new Room{Roomnumber = 22, Roomsize = 3},
+            new Room{Roomnumber = 23, Roomsize = 3}, new Room{Roomnumber = 24, Roomsize = 3},
+            new Room{Roomnumber = 25, Roomsize = 3}, new Room{Roomnumber = 26, Roomsize = 3},
+            new Room{Roomnumber = 27, Roomsize = 3}, new Room{Roomnumber = 28, Roomsize = 3},
+            new Room{Roomnumber = 29, Roomsize = 3}, new Room{Roomnumber = 30, Roomsize = 3}
         };
 
 
@@ -47,15 +32,15 @@ namespace HotelDrCsharp
             ReservationsList.ForEach(Console.WriteLine);
             int roomnumber = Helper.InputIntRange("Podaj numer pokoju: ", 1, 30);
 
-            Customer customer = Helper.AddCustomer();
+            //Customer customer = Helper.AddCustomer();
 
-            DateTime StartDate = Helper.AddStartDate();
+            //DateTime StartDate = Helper.AddStartDate();
 
-            DateTime EndDate = Helper.AddEndDate(StartDate);
+            //DateTime EndDate = Helper.AddEndDate(StartDate);
 
             if (true)
             {
-                Reservation reservation = new Reservation(roomnumber, customer, StartDate, EndDate);
+                Reservation reservation = new Reservation(roomnumber);
                 ReservationsList.Add(reservation);
                 hotellist[roomnumber - 1].Status = true;
             }
@@ -71,11 +56,29 @@ namespace HotelDrCsharp
             ReservationsList.ForEach(Console.WriteLine);
             int id = Helper.InputInt("Podaj numer rezerwacji: ");
 
-            var itemToRemove = ReservationsList.Single(item => item.Id == id);
-            ReservationsList.Remove(itemToRemove);
+            bool reservationexist = ReservationsList.Any(item => item.Id == id);
+            if (!reservationexist)
+            {
+                Console.WriteLine($"Brak rezerwacji o numerze: {id}");
+            }
+            else
+            {
+                var itemToRemove = ReservationsList.Single(item => item.Id == id);
+                ReservationsList.Remove(itemToRemove);
 
-            ReservationsList.ForEach(Console.WriteLine);
-            Helper.Wait();
+                int roomnumber = itemToRemove.Roomnumber;
+                Console.WriteLine(roomnumber);
+                int count = ReservationsList.FindAll(item => item.Roomnumber == roomnumber).Count;
+                Console.WriteLine(count);
+
+                if (count == 0)
+                {
+                    hotellist[roomnumber - 1].Status = false;
+                }
+
+                ReservationsList.ForEach(Console.WriteLine);
+            }
+
         }
 
         //public bool Date(int room, DateTime start, DateTime end)
@@ -86,24 +89,16 @@ namespace HotelDrCsharp
         //}
 
 
-        public static void ToString()
-        {
-            foreach (var item in hotellist)
-            {
-                string status = (item.Status == true) ? "rezerwcja" : "wolne";
-                if (item.Status)
-                {
-                    Console.WriteLine("-------------------------------");
-                    Console.WriteLine($"Numer pokoju: {item.Roomnumber}, Ilość pokoi: {item.Roomsize}, Status: {status}");
-                    Console.WriteLine($"Klient: {item.Customer}");
-                    Console.WriteLine($"Od: {item.StartDate.ToString("yyyy-MM-dd")} do: {item.EndDate.ToString("yyyy-MM-dd")}");
-                }
-                else
-                {
-                    //string customer = (item.Status == true) ? $"\nKlinet: {item.Customer.ToString()}" : "";
-                    Console.WriteLine($"Numer pokoju: {item.Roomnumber}, Ilość pokoi: {item.Roomsize}, Status: {status}");
-                }
-            }
-        }
+        //public override string ToString()
+        //{
+        //    foreach (var item in hotellist)
+        //    {
+        //        string status = (item.Status == true) ? "rezerwcja" : "wolne";
+                
+        //            //string customer = (item.Status == true) ? $"\nKlinet: {item.Customer.ToString()}" : "";
+        //            return $"Numer pokoju: {item.Roomnumber}, Ilość pokoi: {item.Roomsize}, Status: {status}";
+            
+        //    }
+        //}
     }
 }

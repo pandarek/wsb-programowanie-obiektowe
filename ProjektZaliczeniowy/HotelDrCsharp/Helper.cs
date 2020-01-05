@@ -19,16 +19,17 @@ namespace HotelDrCsharp
             Console.WriteLine("Zmina hasła: " + Program.currentuser.ChangePassword);
             Console.WriteLine("Wybierz opcje: ");
 
+
+            Console.WriteLine("\nRezerwacje -----------------------------");
             Console.WriteLine("1 - Dodaj rezerwacje");
             Console.WriteLine("2 - Usun rezerwacje");
-            Console.WriteLine("3 - Sprawdz miejsce");
-            Console.WriteLine("---------------------------------");
+            Console.WriteLine("3 - Wyświetl rezerwacje");
+            Console.WriteLine("\nPokoje ---------------------------------");
             Console.WriteLine("4 - Wyswietl wszystkie pokoje");
-            Console.WriteLine("5 - Wyswietl wolne miejsca");
+            Console.WriteLine("5 - Wyswietl wolne pokoje");
             Console.WriteLine("6 - Wyswietl zarezerwowane pokoje");
-            Console.WriteLine("---------------------------------");
+            Console.WriteLine("\nInne -------------------------------------");
             Console.WriteLine("9 - Ustawienia");
-            Console.WriteLine("---------------------------------");
             Console.WriteLine("0 - Zamknij system");
         }
 
