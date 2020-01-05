@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Xml.Serialization;
 
 namespace HotelDrCsharp
 {
     public class Hotel
     {
-        public List<Reservation> ReservationsList = new List<Reservation>();
+        private List<Reservation> _reservationsList = new List<Reservation>();
+
         public static List<Room> hotellist = new List<Room>
         {
             new Room{Roomnumber = 1, Roomsize = 1},  new Room{Roomnumber = 2, Roomsize = 1},
@@ -26,23 +29,42 @@ namespace HotelDrCsharp
             new Room{Roomnumber = 29, Roomsize = 3}, new Room{Roomnumber = 30, Roomsize = 3}
         };
 
+        [XmlArray]
+        public List<Reservation> ReservationsList { get => _reservationsList; set => _reservationsList = value; }
 
+
+        //Dodawanie rezerwacji
         public void AddReservation()
         {
-            ReservationsList.ForEach(Console.WriteLine);
+            Console.Clear();
+            Console.WriteLine("Dodawanie Rezerwacji\n");
+            //ReservationsList.ForEach(Console.WriteLine);
+
             int roomnumber = Helper.InputIntRange("Podaj numer pokoju: ", 1, 30);
 
-            //Customer customer = Helper.AddCustomer();
+            Customer customer = Helper.AddCustomer();
 
-            //DateTime StartDate = Helper.AddStartDate();
+            DateTime StartDate = Helper.AddStartDate();
 
-            //DateTime EndDate = Helper.AddEndDate(StartDate);
+            DateTime EndDate = Helper.AddEndDate(StartDate);
 
-            if (true)
+            bool dateoverlapcheck = DateOverlap(roomnumber, StartDate, EndDate);
+
+            foreach (var item in ReservationsList.FindAll(item => item.Roomnumber == roomnumber))
             {
-                Reservation reservation = new Reservation(roomnumber);
+                Console.WriteLine("---\n" + item + "\n---");
+                
+            }
+
+            Console.WriteLine("jak jest " + dateoverlapcheck);
+
+            if (!dateoverlapcheck)
+            {
+                Reservation reservation = new Reservation(roomnumber,customer,StartDate,EndDate);
                 ReservationsList.Add(reservation);
                 hotellist[roomnumber - 1].Status = true;
+                Console.WriteLine($"Dodano rezerwację nr {reservation.Id}");
+                Console.WriteLine(reservation);
             }
             else
             {
@@ -51,6 +73,8 @@ namespace HotelDrCsharp
 
         }
 
+
+        //Usuwanie rezerwacji
         public void RemoveReservation()
         {
             ReservationsList.ForEach(Console.WriteLine);
@@ -67,26 +91,36 @@ namespace HotelDrCsharp
                 ReservationsList.Remove(itemToRemove);
 
                 int roomnumber = itemToRemove.Roomnumber;
-                Console.WriteLine(roomnumber);
                 int count = ReservationsList.FindAll(item => item.Roomnumber == roomnumber).Count;
-                Console.WriteLine(count);
 
                 if (count == 0)
                 {
                     hotellist[roomnumber - 1].Status = false;
                 }
+                Console.WriteLine($"Usunięto rezerwację nr {itemToRemove.Id}");
 
                 ReservationsList.ForEach(Console.WriteLine);
             }
 
         }
 
-        //public bool Date(int room, DateTime start, DateTime end)
-        //{
-        //    //return ReservationsList.Any(s => s.Roomnumber == room);
-        //    return ReservationsList.Any(s => s.Roomnumber == room && ((start > s.EndDate && end > s.EndDate) || (start < s.StartDate && end < s.StartDate))  );
 
-        //}
+        public bool DateOverlap(int room, DateTime start, DateTime end)
+        {
+            // (StartDate1 <= EndDate2) and(EndDate1 >= StartDate2)
+            //return ReservationsList.Any(s => s.Roomnumber == room);
+
+            //overlap = a.start < b.end && b.start < a.end;
+
+
+            foreach (var item in ReservationsList.FindAll(item => item.Roomnumber == room))
+            {
+                //Console.WriteLine(item);
+                if ((item.StartDate < end) && (start < item.EndDate)) return true;
+
+            }
+            return false;
+        }
 
 
         //public override string ToString()
@@ -94,10 +128,10 @@ namespace HotelDrCsharp
         //    foreach (var item in hotellist)
         //    {
         //        string status = (item.Status == true) ? "rezerwcja" : "wolne";
-                
-        //            //string customer = (item.Status == true) ? $"\nKlinet: {item.Customer.ToString()}" : "";
-        //            return $"Numer pokoju: {item.Roomnumber}, Ilość pokoi: {item.Roomsize}, Status: {status}";
-            
+
+        //        //string customer = (item.Status == true) ? $"\nKlinet: {item.Customer.ToString()}" : "";
+        //        return $"Numer pokoju: {item.Roomnumber}, Ilość pokoi: {item.Roomsize}, Status: {status}";
+
         //    }
         //}
     }

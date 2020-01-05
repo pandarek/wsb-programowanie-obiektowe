@@ -8,18 +8,19 @@ namespace HotelDrCsharp
     public static class SerializeXML
     {
         
-        public static void SaveHotelData()
+        public static void SaveRoomData()
         {
             XmlSerializer serializer = new XmlSerializer(typeof(List<Room>));
 
             using (TextWriter writer = new StreamWriter(@"./hoteldata.xml"))
             {
                 serializer.Serialize(writer, Hotel.hotellist);
-                Console.WriteLine("Dane hotelu zapisane");
+                Console.WriteLine("Dane pokoji zapisane");
             }
 
         }
-        public static void LoadHotelData()
+
+        public static void LoadRoomData()
         {
 
             try
@@ -30,7 +31,7 @@ namespace HotelDrCsharp
                 {
                     var obj = serializer.Deserialize(reader);
                     Hotel.hotellist = (List<Room>)obj;
-                    Console.WriteLine("Dane hotelu wczytane");
+                    Console.WriteLine("Dane pokoji wczytane");
 
                 }
 
@@ -41,7 +42,43 @@ namespace HotelDrCsharp
             }
         }
 
-        
+        public static void SaveReservationData()
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(List<Reservation>));
+
+            using (TextWriter writer = new StreamWriter(@"./reservationdata.xml"))
+            {
+                
+                serializer.Serialize(writer, Program.hotel.ReservationsList);
+                Console.WriteLine("Dane rezerwacji zapisane");
+            }
+
+        }
+        public static void LoadReservationData()
+        {
+
+            try
+            {
+                XmlSerializer serializer = new XmlSerializer(typeof(List<Reservation>));
+
+                using (TextReader reader = new StreamReader(@"./reservationdata.xml"))
+                {
+                    var obj = serializer.Deserialize(reader);
+
+                    //Hotel hotel = new Hotel();
+
+                    Program.hotel.ReservationsList = (List<Reservation>)obj;
+                    Console.WriteLine("Dane rezerwacji wczytane");
+
+                }
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
 
     }
 }

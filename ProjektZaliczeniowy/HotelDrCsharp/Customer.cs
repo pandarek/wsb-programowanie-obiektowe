@@ -7,6 +7,7 @@ using System.IO;
 
 namespace HotelDrCsharp
 {
+    [Serializable]
     public class Customer
     {
         private string _imie;

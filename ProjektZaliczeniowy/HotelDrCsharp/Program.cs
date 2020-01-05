@@ -4,17 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
-
+using System.Xml.Serialization;
 
 namespace HotelDrCsharp
 {
 
-    enum MainMenu
-    {
 
-    }
     class Program
     {
+
+
         //INFO zmieniona logika klass na klasę głowną przechowująca rezerwację (Reservation)
 
         //DONE sprawdzić i poprawić kod, szczególlnie pętle
@@ -36,18 +35,22 @@ namespace HotelDrCsharp
         public static User currentuser;
         public static List<User> users;
         public static bool isadmin;
+        public static Hotel hotel = new Hotel();
         //---------------------------------------------------------------------
         static void Main(string[] args)
         //---------------------------------------------------------------------
+
         {
 
-            // logowanie wyłączone do testów
-             DefaultUser();
-             Login();
-             Start();
+            DefaultUser();
+            Login();
+            Start();
+
 
         }
 
+
+        //ustawienie domyślnego użytkownika przy pierwszym uruchomieniu
         public static void DefaultUser()
         {
             users = new List<User>();
@@ -61,25 +64,21 @@ namespace HotelDrCsharp
                 //default user
                 User user = new Employee("user", "user2020", "", "", "", "");
 
-                
-
                 users.Add(admin);
                 users.Add(user);
-            } else
+            }
+            else
             {
                 SerializeBIN.LoadUsers();
             }
-            
+
         }
 
-        enum MainMenu
-        {
-            Exit, AddReservation, CancelReservation, ShowRezervations, ShowRooms, ShowFreeRooms, ShowReservedRooms, SetUp = 9, 
-        }
 
+        //procedura logowania
         public static void Login()
         {
-            bool startup = true;
+            bool startup = false;
             do
             {
 
@@ -96,14 +95,17 @@ namespace HotelDrCsharp
                 Console.WriteLine("Podaj haslo:");
                 string password = Helper.GetConsolePassword();
 
+                //sprawdzenie czy user i hasło istnieje i jest poprawne
                 bool logincorrect = users.Any(item => item.Login == username && item.Password == password);
+
 
                 if (logincorrect)
                 {
+                    //przypisanie bieżacego usera
                     currentuser = users.Find(item => item.Login == username);
-                    
 
-                    if(currentuser.ChangePassword)
+                    //wymagana zmina hasła przy pierwszym logowaniu
+                    if (currentuser.ChangePassword)
                     {
                         Console.WriteLine("Wymagana zamina hasła");
                         currentuser.Password = Helper.EnterPassword();
@@ -114,8 +116,8 @@ namespace HotelDrCsharp
 
                     }
 
-                    startup = false;
-                    Start(); ///działa wychodzi z pętli i przechodzi do właściwego programu :)
+                    startup = true;
+
                 }
                 else
                 {
@@ -124,10 +126,14 @@ namespace HotelDrCsharp
                 }
                 Console.Clear();
 
-            } while (startup == true);
+            } while (!startup);
+
         }
 
-
+        enum MainMenu
+        {
+            Exit, AddReservation, CancelReservation, ShowRezervations, ShowRooms, ShowFreeRooms, ShowReservedRooms, SetUp = 9,
+        }
 
         public static void Start()
         {
@@ -135,8 +141,8 @@ namespace HotelDrCsharp
             //---------------------------------------------------------------------
             bool end = false;
 
-            Hotel hotel = new Hotel();
-       
+
+
             do
             {
                 Helper.MainMenu();
@@ -145,9 +151,8 @@ namespace HotelDrCsharp
                 switch (Helper.InputInt("\nWybierz opcję: "))
                 {
                     case (int)MainMenu.AddReservation:
-
                         hotel.AddReservation();
-                        hotel.ReservationsList.ForEach(Console.WriteLine);
+                        //hotel.ReservationsList.ForEach(Console.WriteLine);
                         Helper.Wait();
 
                         break;
@@ -182,7 +187,7 @@ namespace HotelDrCsharp
                         Hotel.hotellist.FindAll(s => s.Status != false).ForEach(Console.WriteLine);
                         Helper.Wait();
                         break;
-                   
+
                     case (int)MainMenu.SetUp:
 
                         if (currentuser.IsAdminn())
@@ -199,11 +204,15 @@ namespace HotelDrCsharp
 
                     case (int)MainMenu.Exit:
 
-                        SerializeBIN.SaveUsers();
-                        SerializeXML.SaveHotelData();
                         end = true;
+
+                        SerializeBIN.SaveUsers();
+                        SerializeXML.SaveRoomData();
+                        SerializeXML.SaveReservationData();
                         break;
 
+                    default:
+                        break;
                 }
 
             } while (!end);

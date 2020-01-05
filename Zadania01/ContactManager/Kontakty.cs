@@ -15,7 +15,7 @@ namespace ContactManager
         public int IloscKontaktow { get; set; }
 
         public List<Osoba> KontaktyLista { get => _kontakty; set => _kontakty = value; }
-        
+
 
 
         private Adres DodajAdres()
@@ -80,7 +80,7 @@ namespace ContactManager
             {
                 i++;
                 Console.WriteLine($"{i}: {osoba.PobierzDane()}");
-                
+
             }
             Console.WriteLine();
         }
@@ -96,12 +96,12 @@ namespace ContactManager
                 Console.WriteLine("- Szczegóły kontaktu: -\n");
                 Console.WriteLine(_kontakty[numerkontaktu].PobierzAdres());
             }
-            
+
         }
         public void SostowanieNazwisko()
         {
             _kontakty.Sort(new CompareByNazwisko());
         }
-      
+
     }
 }

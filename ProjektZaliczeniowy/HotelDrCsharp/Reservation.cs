@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
+
+using System.Xml.Serialization;
 
 namespace HotelDrCsharp
 {
-
+    [Serializable]
     public class Reservation
     {
         private int _id;
@@ -15,10 +12,11 @@ namespace HotelDrCsharp
         private Customer _customer;
         private DateTime _startdate;
         private DateTime _enddate;
+        private DateTime startDate;
+        private DateTime endDate;
+        private Customer customer;
 
-        public Reservation()
-        {
-        }
+        public Reservation() { }
 
         public Reservation(int Roomnumber, Customer Customer, DateTime StartDate, DateTime EndDate)
         {
@@ -34,11 +32,12 @@ namespace HotelDrCsharp
             this._id = GetHashCode();
         }
 
+
         public int Roomnumber { get => _roomnumber; set => _roomnumber = value; }
         public int Id { get => _id; set => _id = value; }
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
-        public Customer Customer { get; set; }
+        public DateTime StartDate { get => startDate; set => startDate = value; }
+        public DateTime EndDate { get => endDate; set => endDate = value; }
+        public Customer Customer { get => customer; set => customer = value; }
 
         public override string ToString()
         {

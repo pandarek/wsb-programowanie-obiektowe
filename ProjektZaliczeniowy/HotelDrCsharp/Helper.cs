@@ -6,7 +6,8 @@ namespace HotelDrCsharp
 {
     public class Helper
     {
-        public static void MainMenu() {
+        public static void MainMenu()
+        {
 
             Console.Title = "DrCsharp - System Rezerwacji Hotelowej"; //nazwa konsoli
             Console.BackgroundColor = ConsoleColor.Black; //kolor tła konsoli
@@ -109,13 +110,18 @@ namespace HotelDrCsharp
 
         }
 
+        //wprowadzanie hasla ze sprawdzaniem
         public static string EnterPassword()
         {
             string password, password2;
             do
+            {
+                do
                 {
-                Console.WriteLine("Podaj haslo:");
-                password = Helper.GetConsolePassword();
+                    Console.WriteLine("Podaj haslo:");
+                    password = Helper.GetConsolePassword();
+
+                } while (String.IsNullOrEmpty(password)); 
 
                 Console.WriteLine("Powtórz haslo:");
                 password2 = Helper.GetConsolePassword();
@@ -126,13 +132,12 @@ namespace HotelDrCsharp
                 }
 
             } while (!PasswordTheSame(password, password2));
-            
+
             return password;
         }
 
 
         //rezerwacje
-
         public static Customer AddCustomer()
         {
             Console.WriteLine("------------------------------------------");

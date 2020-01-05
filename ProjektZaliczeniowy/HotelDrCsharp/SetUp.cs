@@ -40,12 +40,14 @@ namespace HotelDrCsharp
                         break;
 
                     case 8:
-                        SerializeXML.SaveHotelData();
+                        SerializeXML.SaveRoomData();
+                        SerializeXML.SaveReservationData();
                         Helper.Wait();
                         break;
 
                     case 9:
-                        SerializeXML.LoadHotelData();
+                        SerializeXML.LoadRoomData();
+                        SerializeXML.LoadReservationData();
                         Helper.Wait();
                         break;
 
