@@ -70,7 +70,7 @@ namespace HotelDrCsharp
             Console.ForegroundColor = ConsoleColor.Black; //kolor pierwszego planu konsoli
 
             Console.Clear();
-            Console.WriteLine("System rezerwacji HotelDrCsharp - ustawienia\n");
+            Console.WriteLine($"\n{Helper.HeaderText()}\n");
             Console.WriteLine("Wybierz opcje: ");
             Console.WriteLine("1 - Dodaj użytkownika");
             Console.WriteLine("2 - Lista użytkowników");
@@ -92,6 +92,8 @@ namespace HotelDrCsharp
         {
             if (Program.currentuser.IsAdminn())
             {
+                Console.Clear();
+                Console.WriteLine($"\n{Helper.HeaderText()}\n");
                 Console.WriteLine("Utwórz nowego użytkownika:");
 
                 string login, password;

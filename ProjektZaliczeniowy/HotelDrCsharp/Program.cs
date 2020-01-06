@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Xml.Serialization;
+using System.Threading;
 
 namespace HotelDrCsharp
 {
@@ -44,8 +45,8 @@ namespace HotelDrCsharp
 
             DefaultUser();
             Login();
+            LoadData();
             Start();
-
 
         }
 
@@ -82,13 +83,13 @@ namespace HotelDrCsharp
             do
             {
 
-                Console.Title = "DrCsharp - System Rezerwacji Hotelowej"; //nazwa konsoli
+                Console.Title = Helper.HeaderText(); //nazwa konsoli
                 Console.BackgroundColor = ConsoleColor.Gray; //kolor tła konsoli
                 Console.ForegroundColor = ConsoleColor.Black; //kolor pierwszego planu konsoli
 
                 Console.Clear();
 
-                Console.WriteLine("\nSystem rezerwacji HotelDrCsharp\n");
+                Console.WriteLine($"\n{Helper.HeaderText()}\n");
                 Console.WriteLine("Podaj login:");
                 string username = Console.ReadLine();
 
@@ -132,7 +133,7 @@ namespace HotelDrCsharp
 
         enum MainMenu
         {
-            Exit, AddReservation, CancelReservation, ShowRezervations, ShowRooms, ShowFreeRooms, ShowReservedRooms, SetUp = 9,
+            Exit, AddReservation, CancelReservation, ShowReservations, ShowRooms, ShowFreeRooms, ShowReservedRooms, SetUp = 9,
         }
 
         public static void Start()
@@ -151,6 +152,9 @@ namespace HotelDrCsharp
                 switch (Helper.InputInt("\nWybierz opcję: "))
                 {
                     case (int)MainMenu.AddReservation:
+                        Console.Clear();
+                        Console.WriteLine($"\n{Helper.HeaderText()}\n");
+                        Console.WriteLine("Rezerwacja pokoju");
                         hotel.AddReservation();
                         //hotel.ReservationsList.ForEach(Console.WriteLine);
                         Helper.Wait();
@@ -158,32 +162,42 @@ namespace HotelDrCsharp
                         break;
 
                     case (int)MainMenu.CancelReservation:
-
+                        Console.Clear();
+                        Console.WriteLine($"\n{Helper.HeaderText()}\n");
+                        Console.WriteLine("Usuwanie rezerwacji");
                         hotel.RemoveReservation();
                         Helper.Wait();
                         hotel.ReservationsList.ForEach(Console.WriteLine);
                         break;
 
-                    case (int)MainMenu.ShowRezervations:
-
+                    case (int)MainMenu.ShowReservations:
+                        Console.Clear();
+                        Console.WriteLine($"\n{Helper.HeaderText()}\n");
+                        Console.WriteLine("Wszystkie Rezerwacje:\n");
                         hotel.ReservationsList.ForEach(Console.WriteLine);
                         Helper.Wait();
                         break;
 
                     case (int)MainMenu.ShowRooms:
-
+                        Console.Clear();
+                        Console.WriteLine($"\n{Helper.HeaderText()}\n");
+                        Console.WriteLine("Wszystkie Pokoje");
                         Hotel.hotellist.ForEach(Console.WriteLine);
                         Helper.Wait();
                         break;
 
                     case (int)MainMenu.ShowFreeRooms:
-
+                        Console.Clear();
+                        Console.WriteLine($"\n{Helper.HeaderText()}\n");
+                        Console.WriteLine("Wolne pokoje");
                         Hotel.hotellist.FindAll(s => s.Status == false).ForEach(Console.WriteLine);
                         Helper.Wait();
                         break;
 
                     case (int)MainMenu.ShowReservedRooms:
-
+                        Console.Clear();
+                        Console.WriteLine($"\n{Helper.HeaderText()}\n");
+                        Console.WriteLine("Zarezerwowane pokoje");
                         Hotel.hotellist.FindAll(s => s.Status != false).ForEach(Console.WriteLine);
                         Helper.Wait();
                         break;
@@ -216,6 +230,27 @@ namespace HotelDrCsharp
                 }
 
             } while (!end);
+        }
+
+        public static void LoadData()
+        {
+            Console.WriteLine($"\n{ Helper.HeaderText()}\n");
+
+            if (Helper.ContinueQuestion("Czy wczytać zapisane dane (t/n): "))
+            {
+                if (File.Exists(@"./reservationdata.xml") && (File.Exists(@"./hoteldata.xml")))
+                {
+                    SerializeXML.LoadRoomData();
+                    SerializeXML.LoadReservationData();
+                    Thread.Sleep(2000);
+                } else
+                {
+                    Console.WriteLine("Brak zapisanych danych");
+                    Thread.Sleep(2000);
+                }
+
+            }
+
         }
     }
 }

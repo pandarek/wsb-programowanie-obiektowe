@@ -36,43 +36,32 @@ namespace HotelDrCsharp
         //Dodawanie rezerwacji
         public void AddReservation()
         {
-            Console.Clear();
-            Console.WriteLine("Dodawanie Rezerwacji\n");
             //ReservationsList.ForEach(Console.WriteLine);
 
             int roomnumber = Helper.InputIntRange("Podaj numer pokoju: ", 1, 30);
-
-            Customer customer = Helper.AddCustomer();
-
+            
             DateTime StartDate = Helper.AddStartDate();
 
             DateTime EndDate = Helper.AddEndDate(StartDate);
 
+            //Sprawdzenie czy dany pokój jest dostępny w danym terminie
             bool dateoverlapcheck = DateOverlap(roomnumber, StartDate, EndDate);
-
-            foreach (var item in ReservationsList.FindAll(item => item.Roomnumber == roomnumber))
-            {
-                Console.WriteLine("---\n" + item + "\n---");
-                
-            }
-
-            Console.WriteLine("jak jest " + dateoverlapcheck);
 
             if (!dateoverlapcheck)
             {
+                Customer customer = Helper.AddCustomer();
                 Reservation reservation = new Reservation(roomnumber,customer,StartDate,EndDate);
                 ReservationsList.Add(reservation);
                 hotellist[roomnumber - 1].Status = true;
-                Console.WriteLine($"Dodano rezerwację nr {reservation.Id}");
+                Console.WriteLine($"\nDodano rezerwację nr {reservation.Id}\n");
                 Console.WriteLine(reservation);
             }
             else
             {
-                Console.WriteLine("daty się nakładają");
+                Console.WriteLine($"\nPokój {roomnumber} w wybranym ternie jest niedostępny\n");
             }
 
         }
-
 
         //Usuwanie rezerwacji
         public void RemoveReservation()
@@ -80,7 +69,9 @@ namespace HotelDrCsharp
             ReservationsList.ForEach(Console.WriteLine);
             int id = Helper.InputInt("Podaj numer rezerwacji: ");
 
+            //Sprawdzenie czy rezerwacja istnieje
             bool reservationexist = ReservationsList.Any(item => item.Id == id);
+
             if (!reservationexist)
             {
                 Console.WriteLine($"Brak rezerwacji o numerze: {id}");
@@ -104,35 +95,42 @@ namespace HotelDrCsharp
 
         }
 
-
+        //Sprawdzenie czy pokój jest dostępny w danym terminie (nakłdanie dat)
         public bool DateOverlap(int room, DateTime start, DateTime end)
         {
-            // (StartDate1 <= EndDate2) and(EndDate1 >= StartDate2)
-            //return ReservationsList.Any(s => s.Roomnumber == room);
 
-            //overlap = a.start < b.end && b.start < a.end;
-
+            int i = 0;
 
             foreach (var item in ReservationsList.FindAll(item => item.Roomnumber == room))
             {
-                //Console.WriteLine(item);
-                if ((item.StartDate < end) && (start < item.EndDate)) return true;
+                //Console.WriteLine("Sprawdzana rezerewacja: " + item);
+                //Console.WriteLine($"\nSprawdzane dane:\n {item.StartDate} = {start} \n{item.EndDate} = {end}\n");
+                if ((item.StartDate < end) && (start < item.EndDate))
+                {
+                    i++;
+                }
+             }
 
-            }
-            return false;
+            //Console.WriteLine("wynik:" + i);
+
+            if (i == 0) { return false; }
+            return true;
         }
 
 
-        //public override string ToString()
-        //{
-        //    foreach (var item in hotellist)
-        //    {
-        //        string status = (item.Status == true) ? "rezerwcja" : "wolne";
+        public override string ToString()
+        {
+            int freerooms = hotellist.Count();
+            int reservations = Program.hotel.ReservationsList.Count();
 
-        //        //string customer = (item.Status == true) ? $"\nKlinet: {item.Customer.ToString()}" : "";
-        //        return $"Numer pokoju: {item.Roomnumber}, Ilość pokoi: {item.Roomsize}, Status: {status}";
+            foreach (var item in hotellist)
+            {
+                 if (item.Status == true) freerooms--;
+            }
 
-        //    }
-        //}
+
+            return $"Wolne pokoje: {freerooms}, Rezerwacje: {reservations}\n";
+
+        }
     }
 }

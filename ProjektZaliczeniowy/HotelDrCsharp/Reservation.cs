@@ -35,13 +35,13 @@ namespace HotelDrCsharp
 
         public int Roomnumber { get => _roomnumber; set => _roomnumber = value; }
         public int Id { get => _id; set => _id = value; }
-        public DateTime StartDate { get => startDate; set => startDate = value; }
-        public DateTime EndDate { get => endDate; set => endDate = value; }
-        public Customer Customer { get => customer; set => customer = value; }
+        public DateTime StartDate { get => _startdate; set => _startdate = value; }
+        public DateTime EndDate { get => _enddate; set => _enddate = value; }
+        public Customer Customer { get => _customer; set => _customer = value; }
 
         public override string ToString()
         {
-            return $"Nr: {_id}, Pokoj: {_roomnumber}, {_customer}, {_startdate}, {_enddate}";
+            return $"Nr: {_id}, Pokoj: {_roomnumber},\nKlient: {_customer}, \nOd: {_startdate.ToString("yyyy-MM-dd")}, Do: {_enddate.ToString("yyyy-MM-dd")}\n";
         }
     }
 

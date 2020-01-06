@@ -11,5 +11,6 @@
 
   <ItemGroup>
     <Compile Remove="Setup %28Kopia powodująca konflikty %28użytkownik PanDarek Krzysztofiak%29 2020-01-02%29.cs" />
+    <Compile Remove="Date.cs" />
   </ItemGroup>
 </Project>

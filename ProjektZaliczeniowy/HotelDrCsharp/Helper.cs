@@ -6,6 +6,10 @@ namespace HotelDrCsharp
 {
     public class Helper
     {
+        public static string HeaderText()
+        {
+            return "DrCsharp - System Rezerwacji Hotelowej";
+        }
         public static void MainMenu()
         {
 
@@ -16,8 +20,8 @@ namespace HotelDrCsharp
             Console.Clear();
             Console.WriteLine("System rezerwacji HotelDrCsharp\n");
             Console.WriteLine("Login: " + Program.currentuser.Login);
-            Console.WriteLine("Czy admin: " + Program.currentuser.IsAdminn());
-            Console.WriteLine("Zmina hasła: " + Program.currentuser.ChangePassword);
+            Console.WriteLine(Program.hotel);
+
             Console.WriteLine("Wybierz opcje: ");
 
 
@@ -134,6 +138,25 @@ namespace HotelDrCsharp
             } while (!PasswordTheSame(password, password2));
 
             return password;
+        }
+
+        public static bool ContinueQuestion(string question)
+        {
+
+            bool keyisok = false;
+
+            Console.WriteLine($"{question}\r");
+
+            while (!keyisok)
+            {
+                ConsoleKeyInfo key = Console.ReadKey(true);
+
+                if (key.KeyChar == 't') return true;
+                if (key.KeyChar == 'n') return false;
+                keyisok &= (key.KeyChar == 'n' && key.KeyChar == 't');
+            }
+
+            return false;
         }
 
 
